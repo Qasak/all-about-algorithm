@@ -11,8 +11,17 @@
 void InsertNode(int v) {
     H[++n] = v;
     for(int k = n; k > 1; k /=2) {
-        
+        if(H[k] > H[k / 2])
+            swap(H, k, k / 2);
+        else
+            break;
     }
+}
+
+void swap(int a[], int i, int j) {
+        int t = a[i];
+        a[i] = a[j];
+        a[j] = t;
 }
 ```
 
