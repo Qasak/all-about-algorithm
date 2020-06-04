@@ -5,7 +5,7 @@
 
 ### 堆
 
-节点编号从1开始[!figure](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/data_structure/heap1.png)
+节点编号从1开始![figure](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/data_structure/heap1.png)
 
 ```c++
 void InsertNode(int v) {
