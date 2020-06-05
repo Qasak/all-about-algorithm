@@ -107,5 +107,50 @@ int Find(int x) {
 
 ![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/data_structure/BST1.png)
 
+#### BST能做什么
+
+支持三种操作
+
++ Insert(x)插入一个值为x的节点
++ Delete(x)删除一个值为x的节点，如果存在的话
++ Find(x)返回一个值为x的节点，如果存在的话
+
+很多扩展
+
++ Count(x)计数小于等于x值的节点个数
++ GetNext(x)返回最小的满足value>=x的节点
+
+简单实现不能保证效率
+
++ 最坏情况，树的高度变成n
++ 保证O(log n )每次操作，需要树的平衡(难以实现)
++ 跳过实现细节
+
+使用标准库的实现
+
++ set,map(C++)
++ TreeSet,TreeMap(Java)
+
+### Fenwick Tree
+
+是线段树的一种变形
+
+支持非常有用的区间运算(interval operations)
+
++ Set(k, x):设置第k个元素值为x
++ Sum(k):计算1，。。。，k元素的和(前缀和)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
