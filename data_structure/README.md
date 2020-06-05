@@ -222,38 +222,39 @@ int min(int a,int b) {
 void init(int n_) {
     n=1;
     while(n<n_) n=n*2;
-    for(int i=0;i<2*MAXN -1;i++) dat[i]=INT_MAX;
+    for(int i=0;i<2*MAXN -1;i++) dat[i]=0;
 }
-void update(int k, int a) {
-    k += n-1;
+void Set(int k, int a) {
+    k += n-2;
     dat[k]=a;
     while(k>0) {
         k=(k-1)/2;
-        dat[k] = min(dat[k*2+1],dat[k*2+2]);
+        dat[k] = dat[k*2+1]+dat[k*2+2];
     }
 }
-//在外查询用query(a, b, 0, 0, n)
-//当前区间[l,r)
-int query(int a, int b, int k, int l, int r) {
-    if(b<=l||r<=a) return INT_MAX;
-    else if(a<=l&&r<=b) return dat[k];
+
+int Sum(int k, int sum=0) {
+    if(k==0) return sum;
     else {
-        int lch=query(a,b,2*k+1,l,(l+r)/2);//l+(r-l)/2
-        int rch=query(a,b,2*k+2,(l+r)/2,r);
-        return min(lch,rch);
+        if(k%2) {sum=dat[k]+Sum((k-2)/2,sum);}
+        else sum+=Sum((k-1)/2,sum);
     }
+    return sum;
 }
 
 
 int main()                                
 {
     int k=10;
-    int L[k]={0,1,0,1,2,4,7,9,6,4};
+    int L[k]={9,1,-8,1,2,4,7,9,6,4};
     init(k);
     for(int i=0; i<k;i++) {
-        update(i,L[i]);
+        Set(i+1,L[i]);
     }
-    printf("\n%d", query(6,6,0,0,n));
+    for(int i=0; i<2*n-1;i++) {
+        printf("%d ", dat[i]);
+    }
+    printf("\n%d", Sum(3+n-2));
     return 0;                         
 }     
 ```
