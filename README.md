@@ -59,3 +59,42 @@ void DeleteNode() {
 
 ### 并查集
 
+```c++
+int Find(int x) {
+    while(x != L[x]) x=L[x];
+    return x;
+}
+
+//递归写法
+int Find(int x) {
+    if(x != L[x]) x = Find(L[x]);
+    return x;
+}
+
+void Union(int x, int y) {
+    L[Find(x)] = Find(y);
+}
+```
+
+### 路径压缩
+
++ 在坏的情况下，树变得很深
++ 路径压缩在每次`Find()`被调用时，使树变浅
++ 在根不变的情况下，我们不关心树长什么样
+  + 每次`Find(x)`返回根后，回溯到x，重新路由所有的链接到根
+
+```c++
+int Find(int x) {
+    if(x == L[x]) return x;
+    int root = Find(L[x]);
+    L[x] = root;
+    return root;
+}
+
+int Find(int x) {
+    return x == L[x] ? x : L[x] = Find(L[x]);
+}
+```
+
+
+
