@@ -215,10 +215,7 @@ eg：
 #include<stdio.h>
 int const MAXN = 1<<17;
 int n, dat[2*MAXN - 1];
-int min(int a,int b) {
-    if(a>b) return b;
-    else return a;
-}
+
 void init(int n_) {
     n=1;
     while(n<n_) n=n*2;
