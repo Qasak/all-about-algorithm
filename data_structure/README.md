@@ -226,7 +226,6 @@ void init(int n_) {
 }
 void update(int k, int a) {
     k += n-1;
-    printf("%d\n", k);
     dat[k]=a;
     while(k>0) {
         k=(k-1)/2;
@@ -253,9 +252,6 @@ int main()
     init(k);
     for(int i=0; i<k;i++) {
         update(i,L[i]);
-    }
-    for(int i=0; i<2*n-1;i++) {
-        printf("%d ",dat[i]);
     }
     printf("\n%d", query(6,6,0,0,n));
     return 0;                         
