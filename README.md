@@ -98,3 +98,14 @@ int Find(int x) {
 
 
 
+### 二叉搜索树（BST）
+
+二叉搜索树有如下性质：对每个节点v
+
++ v>=v的左子树
++ v<=v的右子树
+
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/data_structure/BST1.png)
+
+
+
