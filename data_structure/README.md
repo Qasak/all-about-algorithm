@@ -259,6 +259,12 @@ int main()
 }     
 ```
 
+### BIT实现
+
+
+
+
+
 
 
 ## 最近公共祖先（Lowest Common Ancestor，LCA）
