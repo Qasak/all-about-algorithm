@@ -225,7 +225,7 @@ void init(int n_) {
     for(int i=0;i<2*MAXN -1;i++) dat[i]=0;
 }
 void Set(int k, int a) {
-    k += n-2;
+    k += n-1;
     dat[k]=a;
     while(k>0) {
         k=(k-1)/2;
@@ -249,7 +249,7 @@ int main()
     int L[k]={9,1,-8,1,2,4,7,9,6,4};
     init(k);
     for(int i=0; i<k;i++) {
-        Set(i+1,L[i]);
+        Set(i,L[i]);
     }
     for(int i=0; i<2*n-1;i++) {
         printf("%d ", dat[i]);
