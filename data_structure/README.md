@@ -188,6 +188,84 @@ eg：
   + 否则
     + P指向P的父节点
 
+### 更新值
+
++ 也就是Set(k,x) (设置叶子k的值为x)
++ 这部分更简单
++ 仅改变叶子k及其祖先
+
+1. 从叶子k开始，改变它的值为x
+2. 去到它的父亲，重新计算值
+3. 重复2，直到根节点
+
+### 扩展
+
++ 使Sum()函数在任意区间工作
+  + 不仅是从 item 1开始
++ 用新的Sum()函数支持更多操作
+  + Min(i,  j)区间i,...,j的最小值
+  + Max(i,  j)区间i,...,j的最大值
+
+
+
+### 线段树实现
+
+```c++
+#include<bits/stdc++.h>
+#include<stdio.h>
+int const MAXN = 1<<17;
+int n, dat[2*MAXN - 1];
+int min(int a,int b) {
+    if(a>b) return b;
+    else return a;
+}
+void init(int n_) {
+    n=1;
+    while(n<n_) n=n*2;
+    for(int i=0;i<2*MAXN -1;i++) dat[i]=INT_MAX;
+}
+void update(int k, int a) {
+    k += n-1;
+    printf("%d\n", k);
+    dat[k]=a;
+    while(k>0) {
+        k=(k-1)/2;
+        dat[k] = min(dat[k*2+1],dat[k*2+2]);
+    }
+}
+//在外查询用query(a, b, 0, 0, n)
+//当前区间[l,r)
+int query(int a, int b, int k, int l, int r) {
+    if(b<=l||r<=a) return INT_MAX;
+    else if(a<=l&&r<=b) return dat[k];
+    else {
+        int lch=query(a,b,2*k+1,l,(l+r)/2);//l+(r-l)/2
+        int rch=query(a,b,2*k+2,(l+r)/2,r);
+        return min(lch,rch);
+    }
+}
+
+
+int main()                                
+{
+    int k=10;
+    int L[k]={0,1,0,1,2,4,7,9,6,4};
+    init(k);
+    for(int i=0; i<k;i++) {
+        update(i,L[i]);
+    }
+    for(int i=0; i<2*n-1;i++) {
+        printf("%d ",dat[i]);
+    }
+    printf("\n%d", query(6,6,0,0,n));
+    return 0;                         
+}     
+```
+
+
+
+## 最近公共祖先（Lowest Common Ancestor，LCA）
+
 
 
 
