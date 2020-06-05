@@ -163,6 +163,31 @@ int Find(int x) {
 + 每层最多选择1个节点，这样我们看到的节点总数为log2 n
 + 可以在O(logn)时间内完成
 
+eg：
+
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/data_structure/FenwickTree2.png)
+
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/data_structure/FenwickTree3.png)
+
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/data_structure/FenwickTree4.png)
+
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/data_structure/FenwickTree5.png)
+
+
+
+### 计算前前缀和
+
++ 也就是计算Sum(k)
+
++ 维护指针P，初始值向叶子节点k
++ 用一下过程爬树
+  + 如果P是指向某节点的左儿子
+    + 加上P的值
+    + 让P指向P的左邻居的父节点
+    + 如果P没有左邻居，终止
+  + 否则
+    + P指向P的父节点
+
 
 
 
