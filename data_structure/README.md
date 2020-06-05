@@ -149,9 +149,23 @@ int Find(int x) {
 
 + 例子中n=8
 + 第k个节点保存了元素k的值
-+ 每个区间
++ 每个区间保存儿子的值的和
+  + e.g.,红色节点保存item[5]+item[6]
 
 ![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/data_structure/FenwickTree1.png)
+
+### 对连续值求和
+
+主要思想：选择求和得到所需值的最小节点集
+
+我们观察到：
+
++ 每层最多选择1个节点，这样我们看到的节点总数为log2 n
++ 可以在O(logn)时间内完成
+
+
+
+
 
 
 
