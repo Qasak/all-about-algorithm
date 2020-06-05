@@ -151,7 +151,7 @@ int Find(int x) {
 + 第k个节点保存了元素k的值
 + 每个区间
 
-
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/data_structure/FenwickTree1.png)
 
 
 
