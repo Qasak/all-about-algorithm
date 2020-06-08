@@ -258,8 +258,8 @@ int main()
 
 ### BIT实现
 
-```
-
+```c++
+// TODO
 ```
 
 
@@ -332,9 +332,9 @@ int main()
 
 
 
-### 朴素实现
+### LCA朴素实现 ：节点上浮
 
-节点上浮
+
 
 ```c++
 #include<bits/stdc++.h>
@@ -401,7 +401,7 @@ int main() {
 
 
 
-### 二分搜索
+### LCA：二分搜索
 
 ```c++
 #include<bits/stdc++.h>
@@ -491,6 +491,14 @@ int main() {
     cout<<lca(u,v);
     return 0;
 }
+
+```
+
+
+
+### LCA：RMQ
+
+```c++
 
 ```
 
