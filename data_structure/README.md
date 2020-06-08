@@ -403,7 +403,7 @@ int main() {
 
 
 
-### LCA：二分搜索
+### LCA：指数逼近
 
 ```c++
 #include<bits/stdc++.h>
