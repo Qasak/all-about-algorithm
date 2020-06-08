@@ -447,7 +447,7 @@ void init() {
 }
 
 int lca(int u, int v) {
-    //让u,v走到同一深度
+    //让u,v走到同一深度, todo:这里也可改为二分
     while(depth[u]>depth[v]) u=parent[0][u];
     while(depth[u]<depth[v]) v=parent[0][v];
     printf("when u and v in same level. u: %d, v: %d\n",u,v);
