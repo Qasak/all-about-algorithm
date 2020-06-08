@@ -303,6 +303,35 @@ int main()
 
 
 
+### case:
+
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/data_structure/lca.png)
+
+`lca_in.txt`
+
+```
+8
+1 2
+1 3
+2 1
+2 4
+2 5
+3 1
+3 6
+4 2
+5 2
+5 7
+5 8
+6 3
+7 5
+8 5
+5 8
+```
+
+
+
+
+
 ### 朴素实现
 
 节点上浮
@@ -371,6 +400,99 @@ int main() {
 ```
 
 
+
+### 二分搜索
+
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+int const MAX_V = 1<<17;
+int const MAX_LOG_V = 17;
+int root;
+int parent[MAX_LOG_V][MAX_V];//根节点的父节点为-1
+int depth[MAX_V];
+vector<int> G[MAX_V];
+
+void print_vector(vector<int>& a) {
+    for(int i=0;i<a.size();i++) {
+        cout<<a[i]<<" ";
+    }
+    cout<<endl;
+}
+
+
+
+void dfs(int v, int p, int d) {
+    parent[0][v]=p;
+    depth[v]=d;
+    for(int i=0;i<G[v].size();i++) {
+        if(G[v][i]!=p) {
+            dfs(G[v][i],v,d+1);
+        }
+    }
+}
+
+void init() {
+    dfs(root,-1,0);
+    for(int k=0;k+1<MAX_LOG_V;k++) {
+        for(int v=0;v<MAX_V;v++) {
+            if(parent[k][v]<0) {
+                parent[k+1][v]=-1;
+            }
+            else {
+                parent[k+1][v]=parent[k][parent[k][v]];
+            }
+        }
+    }
+}
+
+int lca(int u, int v) {
+    //让u,v走到同一深度
+    while(depth[u]>depth[v]) u=parent[0][u];
+    while(depth[u]<depth[v]) v=parent[0][v];
+    printf("when u and v in same level. u: %d, v: %d\n",u,v);
+    if (u==v) return u;
+    else {
+        for(int k=MAX_LOG_V-1;k>=0;k--) {
+            if(parent[k][u]!=parent[k][v]) {
+                u=parent[k][u];
+                v=parent[k][v];
+            }
+        }
+        u=parent[0][u];
+        return u;
+    }
+    
+}
+
+int main() {
+    freopen("lca_in.txt","r",stdin);
+    root=1;
+    int n;
+    cin>>n;
+    int E=n-1;
+    for(int i=0;i<2*E;i++) {
+        int u,v;
+        cin>>u>>v;
+        G[u].push_back(v);
+    }
+    for(int i=1;i<=n;i++) {
+        printf("Node %d:",i);
+        print_vector(G[i]);
+    }
+    init();
+    for(int i=1;i<=n;i++) {
+        printf("%d's Parent: %d\n",i, parent[0][i]);
+        printf("%d's Depth: %d",i, depth[i]);
+        cout<<endl;
+    }
+    int u,v;
+    cin>>u>>v;
+    cout<<lca(u,v);
+    return 0;
+}
+
+```
 
 
 
