@@ -285,6 +285,8 @@ int main()
   + Anc\[x][0]:x的父亲
   + Anc\[x][k]:Anc[ Anc\[x][k-1] ]\[ k-1 ]
 
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/data_structure/lca1.png)
+
 ### 应答查询
 
 + 给定两个节点编号x,y
