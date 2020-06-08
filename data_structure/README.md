@@ -258,19 +258,117 @@ int main()
 
 ### BIT实现
 
+```
+
+```
 
 
 
 
 
 
-## 最近公共祖先（Lowest Common Ancestor，LCA）
+
+## 最低公共祖先（Lowest Common Ancestor，LCA）
 
 
 
++ 输入：一棵有根树和一堆节点对
++ 输出：给定节点对的最低(最深)公共祖先
++ 目标：在O(nlogn)时间预处理树，以便每次LCA查询在O(logn)时间内应答
+
+### 预处理
+
++ 每个节点保存其深度，以及到每个2^k th祖先的链接( as well as the links to every 2kth ancestor )
+  + 每个节点额外O(logn)的存储空间
+  + 我们将用Anc\[x\]\[k\]来表示(denote)x的第2^k个祖先
++ 计算Anc\[x\]\[k\]:
+  + Anc\[x][0]:x的父亲
+  + Anc\[x][k]:Anc[ Anc\[x][k-1] ]\[ k-1 ]
+
+### 应答查询
+
++ 给定两个节点编号x,y
+  + 不失一般性(without loss of generality),假定`depth(x)<=depth(y)`
++ 维护两个指针p,q,初始化指向x和y
++ 如果`depth(p)<depth(q),把q移到和p同一深度`
+  + 利用之前计算过的`Anc`
++ 现在我们假定`depth(p)=depth(q)`
++ 如果p和q相同，返回p
++ 否则，初始化k为`⌈log2 n⌉ `并且重复:
+  + 如果k是0，返回p的父节点
+  + 如果`Anc[p][k]`未定义，或者如果`Anc[p][k]`和`Anc[q][k]`指向同一个节点：
+    + k减少1
+  + 否则：
+    + 置`p=Anc[p][k]` ,`q=Anc[q][k]`让p和q上升2^k层
 
 
 
+### 朴素实现
+
+节点上浮
+
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+int const MAX_V = 1<<17;
+vector<int> G[MAX_V];
+
+void print_vector(vector<int>& a) {
+    for(int i=0;i<a.size();i++) {
+        cout<<a[i]<<" ";
+    }
+    cout<<endl;
+}
+
+int root;
+int parent[MAX_V];//根节点的父节点为-1
+int depth[MAX_V];
+
+void dfs(int v, int p, int d) {
+    parent[v]=p;
+    depth[v]=d;
+    for(int i=0;i<G[v].size();i++) {
+        if(G[v][i]!=p) {
+            dfs(G[v][i],v,d+1);
+        }
+    }
+}
+
+int lca(int u, int v) {
+    //让u,v走到同一深度
+    while(depth[u]>depth[v]) u=parent[u];
+    while(depth[u]<depth[v]) v=parent[v];
+    while(u!=v) {u=parent[u];v=parent[v];}
+    return u;
+}
+
+int main() {
+    freopen("lca_in.txt","r",stdin);
+    int n;
+    cin>>n;
+    int E=n-1;
+    for(int i=0;i<2*E;i++) {
+        int u,v;
+        cin>>u>>v;
+        G[u].push_back(v);
+    }
+    for(int i=1;i<=n;i++) {
+        printf("Node %d:",i);
+        print_vector(G[i]);
+    }
+    dfs(1,-1,0);
+    for(int i=1;i<=n;i++) {
+        printf("%d's Parent: %d\n",i, parent[i]);
+        printf("%d's Depth: %d",i, depth[i]);
+        cout<<endl;
+    }
+    int u,v;
+    cin>>u>>v;
+    cout<<lca(u,v);
+    return 0;
+}
+
+```
 
 
 
