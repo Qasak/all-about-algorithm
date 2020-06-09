@@ -25,7 +25,13 @@ $$
 
 ![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_of_sos4.png)
 
+$\sum k=\frac{n(n+1)}{2}$
+
 $\frac{\sum k^2}{\sum k}=\frac{2n+1}{3}$
+
+$\sum k^2=\frac{1}{6}(n)(n+1)(2n+1)$
+
+
 
 ## 斐波那契序列
 
