@@ -49,6 +49,17 @@ a(a^{\frac{n-1}{2}})^2 &&&& n\ is\ odd \\
 \end{matrix}
 \right.
 $$
+实现
+
+```c++
+double pow(double a, int n) {
+	if(n==0) return 1;
+	if(n==1) return a;
+    double t=pow(a,n/2);
+    return t*t*(n&1?a:1);
+}
+```
+
 
 
 
