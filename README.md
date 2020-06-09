@@ -1,5 +1,6 @@
 # All-about-Stanford-CS-97SI
  all solutions of CS-97-SI problems
+> 要阅读公式，须实现安装[MathJax Plugin for chrome](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima).
 
 ## 数据结构
 
