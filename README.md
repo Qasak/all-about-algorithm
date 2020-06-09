@@ -3,6 +3,10 @@
 > 要阅读公式，须安装[MathJax Plugin for chrome](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima).
 > 或者本地用typora打开
 
+## 数学
+
+[mathematics](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/README.md)
+
 ## 数据结构
 
 [data_structure](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/data_structure/README.md)
