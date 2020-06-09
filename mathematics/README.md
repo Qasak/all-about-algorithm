@@ -1,5 +1,7 @@
 # Mathematics
 
+> github README.md存在显示格式问题，可能需要在[typora](https://typora.io/)中打开
+
 ## 幂和
 
 平方和与立方和
