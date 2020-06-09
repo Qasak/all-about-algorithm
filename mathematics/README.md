@@ -17,13 +17,13 @@ $$
 
 ![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/sum_of_squares.jpg)
 
-![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_of_sos1.png)
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_sos1.png)
 
-![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_of_sos2.png)
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_sos2.png)
 
-![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_of_sos3.png)
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_sos3.png)
 
-![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_of_sos4.png)
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_sos4.png)
 
 $\sum k=\frac{n(n+1)}{2}$
 
