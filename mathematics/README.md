@@ -4,14 +4,16 @@
 
 ### 幂和
 
+平方和与立方和
 $$
 \begin{align*}
 &\sum^n_{k=1}k^2=\frac{1}{6}n(n+1)(2n+1) \\
 &\sum k^3=(\sum k)^{2}
-\end{align*}
+\end{align*} \\
 $$
+证明：
 
-
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/sum_of_squares.jpg)
 
 ## 斐波那契序列
 
