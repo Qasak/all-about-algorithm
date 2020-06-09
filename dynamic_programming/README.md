@@ -51,6 +51,6 @@ for(int i=4;i<=n;i++)
     D[i]=D[i-1]+D[i-3]+D[i-4];
 ```
 
-+ 扩展：当$n\approx10^{12}$
++ 扩展：当$n\approx10^{12}$($2^{10}\approx10^3,10^{12}=(10^{3})^{4}\approx(2^{10})^4=2^{40}$)
   + 重复调用[斐波那契数的矩阵形式](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/README.md)
 
