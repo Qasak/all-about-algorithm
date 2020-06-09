@@ -11,19 +11,11 @@ $$
 &\sum k^3=(\sum k)^{2}
 \end{align*} \\
 $$
-证明：
+简易证明：
 
 > Proofs without Words: Exercises in Visual Thinking
 
 ![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/sum_of_squares.jpg)
-
-![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/sum_of_squares1.jpg)
-
-![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/sum_of_squares2.jpg)
-
-![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/sum_of_squares3.jpg)
-
-![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/sum_of_squares4.jpg)
 
 
 
