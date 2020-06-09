@@ -1,0 +1,23 @@
+# Mathematics
+
+## 斐波那契序列
+
++ 定义
+  + $F_0=0,F_1=1$
+  + $F_n=F_{n-1}+F_{n-2},n\ge2$
+
+### 封闭形式
+
++ $$
+  F_n=(1/\sqrt5)(\phi^n-\bar{\phi}^n)\\ \phi=(1+\sqrt5)/2\\ \bar{\phi}=(1+\sqrt5)/2\\
+  $$
+
+  
+
++ 不好：因为$\phi$和$\sqrt5$是无理数
+
++ 对于很大的$n$,不能计算$F_n$的准确值
+
++ 这里给一个更稳定的方法计算$F_n$
+
+  + ...以及别的相似的重叠子问题形式(and any other recurrence of a similar form)
