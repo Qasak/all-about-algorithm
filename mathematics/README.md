@@ -20,4 +20,50 @@
 
 + 这里给一个更稳定的方法计算$F_n$
 
-  + ...以及别的相似的重叠子问题形式(and any other recurrence of a similar form)
+  + ...以及别的相似的递推形式(and any other recurrence of a similar form)
+
+### 更好的“封闭”形式
+
+$$
+\left[
+\begin{matrix}
+F_{n+1} \\ F_n
+\end{matrix}
+\right] 
+
+=
+
+\left[
+\begin{matrix}
+1&1\\
+1&0
+\end{matrix}
+\right]
+
+\left[
+\begin{matrix}
+F_{n} \\ F_{n-1}
+\end{matrix}
+\right] 
+
+=
+\left[
+\begin{matrix}
+1&1\\
+1&0
+\end{matrix}
+\right]^{n}
+
+\left[
+\begin{matrix}
+F_{1} \\ F_{0}
+\end{matrix}
+\right] 
+
+
+
+\tag{1}
+$$
+
++ 用快速幂计算矩阵幂
++ 可扩展以支持具有常数系数的任何线性递推
