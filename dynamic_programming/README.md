@@ -39,7 +39,7 @@ D_n=D_{n-1}+D_{n-3}+D_{n-4}
 $$
 
 + 解决基础cases（Solve the base cases）
-  + $`D_0=1`$
+  + $D_0=1$
   + $D_n=0$对于所有的负数$n$
   + 换句话说，can set:$D_0=D_1=D_2=1$以及$D_3=2$
 
