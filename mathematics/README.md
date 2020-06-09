@@ -8,7 +8,8 @@
 $$
 \begin{align*}
 &\sum^n_{k=1}k^2=\frac{1}{6}n(n+1)(2n+1) \\
-&\sum k^3=(\sum k)^{2}
+
+&\sum k^3=(\sum k)^{2}=\left((\frac{1}{2}n(n+1))\right)^2
 \end{align*} \\
 $$
 简易证明：
