@@ -16,7 +16,7 @@ $$
 
 > Proofs without Words: Exercises in Visual Thinking
 
-<img src="https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/sum_of_squares.jpg" width="150" height="200" alt="sum_of_squares"/>
+<div align=center><img width="350" height="350" src="https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/sum_of_squares.jpg"/></div>
 
 ![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_sos1.png)
 
