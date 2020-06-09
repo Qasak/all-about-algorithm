@@ -1,8 +1,6 @@
 # Mathematics
 
-## 快速幂
-
-### 幂和
+## 幂和
 
 平方和与立方和
 
@@ -33,6 +31,25 @@ $\sum k=\frac{n(n+1)}{2}$
 $\frac{\sum k^2}{\sum k}=\frac{2n+1}{3}$
 
 $\sum k^2=\frac{1}{6}(n)(n+1)(2n+1)$
+
+## 快速幂
+
+递归计算$a^n$:
+$$
+a^n=
+
+\left\{
+\begin{matrix}
+1 &&&& n=0\\
+a &&&& n=1\\
+(a^{\frac{n}{2}})^2 &&&& n\ is\ even\\
+a(a^{\frac{n-1}{2}})^2 &&&& n\ is\ odd \\
+\end{matrix}
+\right.
+$$
+
+
+
 
 
 
