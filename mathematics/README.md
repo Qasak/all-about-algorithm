@@ -5,6 +5,7 @@
 ### 幂和
 
 平方和与立方和
+
 $$
 \begin{align*}
 &\sum^n_{k=1}k^2=\frac{1}{6}n(n+1)(2n+1) \\
@@ -12,13 +13,14 @@ $$
 &\sum k^3=(\sum k)^{2}=\left((\frac{1}{2}n(n+1))\right)^2
 \end{align*} \\
 $$
+
 简易证明：
 
 > Proofs without Words: Exercises in Visual Thinking
 
 <img src="https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/sum_of_squares.jpg" style="zoom:50%" />
 
-![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_sos1.png){ zoom: 50%; }
+<img src="https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_sos1.png" style="zoom:30%" />
 
 ![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_sos2.png)
 
