@@ -20,7 +20,7 @@ $$
 
 <img src="https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/sum_of_squares.jpg" style="zoom:50%" />
 
-<img src="https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_sos1.png" style="zoom:30%" />
+<img src="https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_sos1.png" style="zoom:10%" />
 
 ![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_sos2.png)
 
