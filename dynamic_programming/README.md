@@ -52,5 +52,5 @@ for(int i=4;i<=n;i++)
 ```
 
 + 扩展：当$n\approx10^{12}$
-  + 重复调用斐波那契数的矩阵形式
+  + 重复调用[斐波那契数的矩阵形式](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/README.md)
 
