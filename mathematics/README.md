@@ -17,7 +17,15 @@ $$
 
 ![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/sum_of_squares.jpg)
 
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_of_sos1.png)
 
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_of_sos2.png)
+
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_of_sos3.png)
+
+![img](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/proof_of_sos4.png)
+
+$\frac{\sum k^2}{\sum k}=\frac{2n+1}{3}$
 
 ## 斐波那契序列
 
