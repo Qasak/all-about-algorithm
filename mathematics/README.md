@@ -60,7 +60,8 @@ double pow(double a, int n) {
 }
 ```
 
-
++ 运行时间：$O(log n)$
++ 
 
 
 
