@@ -185,11 +185,33 @@ int main() {
 
 
 + 定义子问题
+
   + 令$D_{ij}$为使$x_{i...j}$成为回文串的最小需要插入字符个数
+
 + 递推关系
-  + 考虑一个包含$x_{i...j}$的最短回文串$y_{1...k}$
+
+  + 考虑一个包含$x_{i...j}$的最短回文串$y_{1...k}$(why?)
   + Either $y_1=x_i\ or\ y_k=x_j$
-  + 
+    + "abc"->"a bc a"->"ac b ca"
+    + "leetcode"->"l eetcode l"->"le etcode el"->"leet cod teel"->"leetc od cteel"     - >        "leetc odo cteel"
+    + "leetcode"->"e leetcod e"->"ed leetco de"->"edo leetc ode"->"edoc leet code"->"edoct lee tcode"->"edocte le etcode"->"edoctee l eetcode"
+  + 最后一个case是$y_1=y_k=x_i=x_j$
+
++ $$
+  D_{ij}=
+  \left\{
+  \begin{matrix} 
+  1+min\{D_{i+1,j},D_{i,j-1}\}  &x_i\neq x_j\\
+  D_{i+1,j-1} & x = x_j 
+  \end{matrix}
+  \right.
+  $$
+
++ 解决基本case:$D_{ii}=D_{i,i-1}=0$,对于所有的$i$
+
+
+
+
 
 
 
