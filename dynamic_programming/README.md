@@ -153,7 +153,7 @@ int max(int a, int b) {
     }
 }
 
-int func(string a,string b) {
+int func(string& a,string& b) {
     for(int i=1;i<=a.size();i++) {
         for(int j=1;j<=b.size();j++) {
             if(a[i-1]==b[j-1]) {
