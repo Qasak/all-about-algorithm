@@ -134,3 +134,43 @@ int main() {
 + eg：
   + x A **B** **C** B D **A B**
   + y:**B** D **C A B** C
+  + "BCAB"是最长公共子序列，答案4
+
++ 定义子问题
+  + 令$D_{ij}$为字符串$x_{1...i},y_{1...j}$的LCS的长度
+
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+int const MAXN=129;
+int dp[MAXN][MAXN];
+
+int max(int a, int b) {
+    if(a>b) {
+        return a;
+    } else {
+        return b;
+    }
+}
+
+int func(string a,string b) {
+    for(int i=1;i<=a.size();i++) {
+        for(int j=1;j<=b.size();j++) {
+            if(a[i-1]==b[j-1]) {
+                dp[i][j]=dp[i-1][j-1]+1;
+            } else {
+                dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
+            }
+
+        }
+    }
+    return dp[a.size()][b.size()];
+}
+int main() {
+    string a,b;
+    cin>>a>>b;
+    cout<<func(a,b)<<endl;
+    return 0;
+}
+```
+
