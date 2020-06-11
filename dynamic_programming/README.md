@@ -27,7 +27,7 @@
 
 + 定义子问题
   + 定义Dn是将n写作1，3，4的方法数
-+ 找到重复(Find the recurrence)
++ 递推关系(Find the recurrence)
   + 考虑一个可行解$n=x_1+x_2+...+x_m$
   + 如果$x_m=1$,剩余部分和一定为$n-1$
   + 因此，以$x_m=1$结尾的和的方法数等于$D_n-1$
@@ -57,6 +57,11 @@ for(int i=4;i<=n;i++)
 ### POJ2663:
 
 + 砖块1*2大小，给定n，找到铺满3xn的板子的方法数
-+ eg：n=12时
++ eg：n=12时的一个可行解
 
 ![poj2663](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/dynamic_programming/poj2663.png)
+
++ 定义子问题
+  + 定义Dn是填满3xn板子的方法数
++ 递推关系
+
