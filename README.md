@@ -1,6 +1,6 @@
 # All-about-Stanford-CS-97SI
  all solutions of CS-97-SI problems
-> 要阅读公式，须安装[MathJax Plugin for chrome](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima).
+> 要渲染Latex公式，须安装[MathJax Plugin for chrome](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima).
 > 或者本地用typora打开
 
 ## 数学
