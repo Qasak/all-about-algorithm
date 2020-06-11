@@ -61,7 +61,12 @@ for(int i=4;i<=n;i++)
 
 ![poj2663](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/dynamic_programming/poj2663.png)
 
+结尾处必须形如
+
+![poj2663](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/dynamic_programming/end.png)
+
 + 定义子问题
   + 定义Dn是填满3xn板子的方法数
 + 递推关系
+  + 
 
