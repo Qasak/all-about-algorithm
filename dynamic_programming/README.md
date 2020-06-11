@@ -54,3 +54,9 @@ for(int i=4;i<=n;i++)
 + 扩展：当$n\approx10^{12}$($2^{10}\approx10^3,10^{12}=(10^{3})^{4}\approx(2^{10})^4=2^{40}$)
   + 重复调用[斐波那契数的矩阵形式](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/mathematics/README.md)
 
+### POJ2663:
+
++ 砖块1*2大小，给定n，找到铺满3xn的板子的方法数
++ eg：
+
+![poj2663](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/dynamic_programming/poj2663.png)
