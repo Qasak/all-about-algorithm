@@ -179,8 +179,8 @@ int main() {
 + 问题：给定字符串$x=x_{1...n}$,找到使其成为回文串的最小需要插入字符个数
 + eg：x="Ab3bd"
 + "dAb3bAd"or"Adb3bdA":插入两个字符（一个'd',一个'A'）
-  + "*Ab3b*d"->"*Ab3bA*d"->"dAb3bAd"
-  + "A*b3bd*"->"A*db3bd*"->"Ab3bdA"
+  + "Ab3bd"->"Ab3bdA"->"Adb3bdA"
+  + "Ab3bd"->"dAb3bd"->"dAb3bAd"
 
 
 
