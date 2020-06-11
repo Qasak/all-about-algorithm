@@ -57,6 +57,6 @@ for(int i=4;i<=n;i++)
 ### POJ2663:
 
 + 砖块1*2大小，给定n，找到铺满3xn的板子的方法数
-+ eg：
++ eg：n=12时
 
 ![poj2663](https://github.com/Qasak/all-about-stanford-cs-97si/blob/master/dynamic_programming/poj2663.png)
