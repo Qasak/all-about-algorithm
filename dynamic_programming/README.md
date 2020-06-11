@@ -128,3 +128,9 @@ int main() {
 
 
 
+## 2-dimensional DP Example
+
++ 问题：给定两个string,x和y，找到最长公共子序列(LCS)并打印出长度
++ eg：
+  + x A **B** **C** B D **A B**
+  + y:**B** D **C A B** C
