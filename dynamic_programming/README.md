@@ -209,6 +209,35 @@ int main() {
 
 + 解决基本case:$D_{ii}=D_{i,i-1}=0$,对于所有的$i$
 
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+const int MAXN=129;
+int D[MAXN][MAXN];
+
+int min(int a,int b) {
+    if(a<b) return a;
+    else return b;
+}
+
+int dp_palindrome(string a) {
+    int n=a.size();
+    for(int t=1;t<n;t++) {
+        for(int i=0,j=t;j<n;i++,j++) {
+            if(a[i]==a[j]) D[i][j]=D[i+1][j-1];
+            else D[i][j]=1+min(D[i+1][j],D[i][j-1]);
+        }
+    }
+    return D[0][n-1];
+}
+int main() {
+    string a;
+    while(cin>>a){
+        cout<<dp_palindrome(a)<<endl;
+    }
+}
+```
+
 
 
 
