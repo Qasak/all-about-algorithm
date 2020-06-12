@@ -284,7 +284,7 @@ int main() {
 
 + 问题：给定一个有n个节点的加权图，找出每个节点只访问一次的最短路径（旅行商问题.TSP）
 
-> 一笔画问题讨论的是能否不重复地遍历一个图的所有边，至于其中有否顶点的遍历或重复经过则没有要求。哈密顿问题讨论的则是顶点的遍历：能否不重复地遍历一个图的所有顶点？[[4\]](https://zh.wikipedia.org/wiki/一笔画问题#cite_note-4)哈密顿问题由[哈密顿](https://zh.wikipedia.org/wiki/威廉·盧雲·哈密頓)在1856年首次提出，至今尚未完全解决[[2\]](https://zh.wikipedia.org/wiki/一笔画问题#cite_note-book-2)
+> **一笔画问题**讨论的是能否不重复地遍历一个图的所有**边**，至于其中有否顶点的遍历或重复经过则没有要求。**哈密顿问题**讨论的则是**顶点**的遍历：能否不重复地遍历一个图的所有顶点？[[4\]](https://zh.wikipedia.org/wiki/一笔画问题#cite_note-4)哈密顿问题由[哈密顿](https://zh.wikipedia.org/wiki/威廉·盧雲·哈密頓)在1856年首次提出，至今尚未完全解决[[2\]](https://zh.wikipedia.org/wiki/一笔画问题#cite_note-book-2)
 >
 > TSP问题在[图论](https://zh.wikipedia.org/wiki/图论)中的一个等价形式是：给定一个[加权完全图](https://zh.wikipedia.org/wiki/图论术语)（顶点表示城市，边表示道路，权重就会是道路的成本或距离）, 求*一权值最小*的[哈密尔顿回路](https://zh.wikipedia.org/wiki/哈密顿图)。
 
