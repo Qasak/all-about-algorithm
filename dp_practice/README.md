@@ -111,12 +111,14 @@ int main() {
   30
   ```
 
+
+
 ```c++
 #include <cstring>
 #include <iostream>
 using namespace std;
 
-const int MAXN=1<<17;
+const int MAXN=1<<13;
 int a[MAXN];
 int sum[MAXN];
 
@@ -129,10 +131,10 @@ int max(int a, int b) {
     }
 }
 
-int dfs(int l, int idx, int pidx, int n) {
-    if(l>n) return sum[pidx];
+int dfs(int l, int idx, int n) {
+    if(l>n) return 0;
     if(sum[idx]!=0) return sum[idx];
-    return sum[idx]=a[idx]+max(dfs(l+1,idx+l,idx,n),dfs(l+1,idx+l+1,idx,n));
+    return sum[idx]=a[idx]+max(dfs(l+1,idx+l,n),dfs(l+1,idx+l+1,n));
 }
 int main()                                
 {
@@ -146,7 +148,7 @@ int main()
         }
     }
     int mx;
-    mx=dfs(1,0,0,n);
+    mx=dfs(1,0,n);
     cout<<mx<<endl;
     return 0;
 }
@@ -155,9 +157,19 @@ int main()
 
 
 
+
+
 ## 1160
 
++ 描述：有一条笔直的公路，公路旁有村庄。公路以整数轴表示，每个村庄的位置用一个整数坐标表示。同一位置上没有两个村庄。两个位置之间的距离是其整数坐标差的绝对值。
 
+  
+
+  邮局将建在一些，但不一定是所有的村庄。一个村子和里面的邮局有着同样的地位。在建设邮局时，应选择其位置，使每个村庄与其最近的邮局之间的所有距离之和最小。
+
+  
+
+  你要写一个程序，根据村庄的位置和邮局的数量，计算每个村庄与其最近的邮局之间所有距离的最小可能总和。
 
 ## 2033
 
