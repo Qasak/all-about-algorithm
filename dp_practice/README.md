@@ -76,6 +76,83 @@ int main() {
 
 ## 1163
 
+```
+				7
+			  3   8
+			8   1   0
+		  2   7   4   4
+		4   5   2   6   5
+```
+
++ 描述：数字三角形。编写一个程序，计算从顶部开始到底部某处的某条路线上经过的数字的最大和。每一步都可以向左斜下或向右斜下。
+
++ 输入：第一行包含一个整数N：三角形的行数。
+
+  下面的N行描述了三角形的数据。
+
+  三角形中的行数大于1但小于等于100。三角形中的所有整数都在0到99之间。
+
++ 输出：最大的和
+
++ 样例：Sample Input
+
+  ```
+  5
+  7
+  3 8
+  8 1 0 
+  2 7 4 4
+  4 5 2 6 5
+  ```
+
+  Sample Output
+
+  ```
+  30
+  ```
+
+```c++
+#include <cstring>
+#include <iostream>
+using namespace std;
+
+const int MAXN=1<<17;
+int a[MAXN];
+int sum[MAXN];
+
+int max(int a, int b) {
+    if(a<b) {
+        return b;
+    }
+    else{
+        return a;
+    }
+}
+
+int dfs(int l, int idx, int pidx, int n) {
+    if(l>n) return sum[pidx];
+    if(sum[idx]!=0) return sum[idx];
+    return sum[idx]=a[idx]+max(dfs(l+1,idx+l,idx,n),dfs(l+1,idx+l+1,idx,n));
+}
+int main()                                
+{
+    // freopen("in_1163.txt","r",stdin);
+    memset(sum,0,sizeof(sum));
+    int n;
+    cin>>n;
+    for (int i = 1; i <= n; i++){
+        for (int j = 0; j < i; j++){
+            cin>>a[i*(i-1)/2+j];
+        }
+    }
+    int mx;
+    mx=dfs(1,0,0,n);
+    cout<<mx<<endl;
+    return 0;
+}
+
+```
+
 
 
 ## 1160
