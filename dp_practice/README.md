@@ -188,7 +188,7 @@ int main()
 + 如果要建P个，假设k个村子已经建了P-1个，在k~n之间建一个就行，这一个正建在中点
 + 定义$w(i,j)$为村子$[i,j]$之间放一个邮局的最短距离和
 + 定义$dp[i][j]$为前$i$个村子放$j$个邮局的最短距离和
-+ 递推：$dp[i][j]=\min(dp[k][j-1]+w(k+1,i),dp[i][j]),k \in (j,i]$
++ 递推：$dp[i][j]=\min(dp[k][j-1]+w(k+1,i),dp[i][j]),k \in [j,i]$
 
 ```c++
 #include <cstring>
@@ -229,9 +229,33 @@ int min(int a, int b) {
     else
     return b;
 }
-int main() {
-    // ans: 1,4,7,8,9
 
+
+void init_w(int V) {
+    for (int i = 1; i <= V; i++)
+    {
+        for (int j = i; j <= V; j++)
+        {
+            w[i][j]=mid_sum(vill,i,j);
+        }
+    }
+}
+
+int run(int V, int P) {
+    for (int i = 1; i<=V; i++)
+    {
+        for (int j = 1; j <= P && j <= i; j++)
+        {
+            for (int k = j-1; k <=i; k++)
+            {
+                dp[i][j]=min(dp[k][j-1]+w[k+1][i],dp[i][j]);
+            }
+        }
+    }
+    return dp[V][P];
+}
+
+int main() {
     int V,P;
     while(cin>>V>>P) {
         memset(dp,0x3f,sizeof(dp));
@@ -239,27 +263,8 @@ int main() {
         memset(w,0,sizeof(w));
         input_vill(V); 
         dp[0][0]=0;
-        for (int i = 1; i <= V; i++)
-        {
-            for (int j = i; j <= V; j++)
-            {
-                w[i][j]=mid_sum(vill,i,j);
-            }
-            
-        }
-        
-        for (int i = 1; i<=V; i++)
-        {
-            for (int j = 1; j <= P && j <= i; j++)
-            {
-                for (int k = j-1; k <=i; k++)
-                {
-                    dp[i][j]=min(dp[k][j-1]+w[k+1][i],dp[i][j]);
-                }
-            }
-            
-        }
-        cout<<dp[V][P];
+        init_w(V);
+        cout<<run(V,P);
     }
     return 0;
 }
