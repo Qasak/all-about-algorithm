@@ -182,44 +182,91 @@ int main()
   Output:
   9
   
-  
-  analysis:
-  1 2 3 6 7 9 11 22 44 50
-    ↑       ↑    ↑  ↑  ↑
-      
-  1+1+3+2+2=9
-  1 2 3 6 7 9 11 22 44 50
-    ↑     ↑      ↑  ↑  ↑
-  1+1+1+2+4=9
-  
-  10 1
-  1 2 3 6 7 9 11 22 44 50
-  ↑
-  D=1+2+5+6+8+10+21+43+49=145
-  
-  10 1
-  1 2 3 6 7 9 11 22 44 50
-          ↑
-  D=117
-  
-  10 2
-  1 2 3 6 7 9 11 22 44 50
-          ↑
-  1 2 3 6 7 9 11 22 44 50
-          ↑      ↑
-          
-  D=6+5+4+1+2+4+22+28=72
-  
-  1 2 3 6 7 9 11 22 44 50
-  ↑       ↑       
-  D=1+2+1+2+2+4+15+47+43=117
-  
   ```
 
-+ 暴力$O(C_v^s)$
-+ 设$D_{(V,S)}$为V个村庄，S个邮局时每个村庄与其最近的邮局之间距离和的最小值
-+ $D_{(V,S)}=update(\min(D_{(V,S-1)},s))$
-+ 
++ 当只选一个点做邮局时，中点(V/2)与其余点距离和一定最小
++ 如果要建P个，假设k个村子已经建了P-1个，在k~n之间建一个就行，这一个正建在中点
++ 定义$w(i,j)$为村子$[i,j]$之间放一个邮局的最短距离和
++ 定义$dp[i][j]$为前$i$个村子放$j$个邮局的最短距离和
++ 递推：$dp[i][j]=\min(dp[k][j-1]+w(k+1,i),dp[i][j]),k \in (j,i]$
+
+```c++
+#include <cstring>
+#include <iostream>
+using namespace std;
+
+int vill[301];
+int dp[301][31];
+int w[301][301];
+
+
+int abs(int a) {
+    if(a<0) return -a;
+    else return a;
+}
+
+int mid_sum(int a[], int l, int r) {
+    int sum=0;
+    int mid=(l+r)/2;
+    for (int i = l; i <= r; i++)
+    {
+        int abs_dist=abs(a[i]-a[mid]);
+        sum+=abs_dist;
+    }
+    return sum;
+}
+
+void input_vill(int V) {
+    for (int i = 1; i <= V; i++)
+    {
+        cin>>vill[i];    
+    }
+}
+
+int min(int a, int b) {
+    if(a<b)
+    return a;
+    else
+    return b;
+}
+int main() {
+    // ans: 1,4,7,8,9
+
+    int V,P;
+    while(cin>>V>>P) {
+        memset(dp,0x3f,sizeof(dp));
+        memset(vill,0,sizeof(vill));
+        memset(w,0,sizeof(w));
+        input_vill(V); 
+        dp[0][0]=0;
+        for (int i = 1; i <= V; i++)
+        {
+            for (int j = i; j <= V; j++)
+            {
+                w[i][j]=mid_sum(vill,i,j);
+            }
+            
+        }
+        
+        for (int i = 1; i<=V; i++)
+        {
+            for (int j = 1; j <= P && j <= i; j++)
+            {
+                for (int k = j-1; k <=i; k++)
+                {
+                    dp[i][j]=min(dp[k][j-1]+w[k+1][i],dp[i][j]);
+                }
+            }
+            
+        }
+        cout<<dp[V][P];
+    }
+    return 0;
+}
+
+```
+
+
 
 
 
