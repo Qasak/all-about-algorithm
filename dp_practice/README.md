@@ -396,11 +396,64 @@ int main() {//1 2 3 5 8 13 21 34 55 89
 }
 ```
 
+解法二：
+
+```c++
+// AlphaCode problem
+// ECNA ACM Regional 2004
+// t feil
+
+#include <iostream>
+using namespace std;
+
+void printit(char c){
+   cout<<c<<endl;
+}
+
+int main(){
+  char c,c1,c2;
+  int last, last1, last2;
+
+  cin>>c1;
+  while(c1!='0'){
+    last=1; 
+    if(cin.peek() != '\n'){
+      cin>>c2; 
+      last2=1;
+      if((c1=='1' || (c1=='2' && c2<'7')) && c2!='0') last=last1=2;
+      else last=last1=1;
+      while(cin.peek() != '\n'){
+        cin>>c;
+        if(c!='0') last=last1; else last=0;
+        if(c2=='1' || (c2=='2' && c<'7'))
+          last += last2;
+        c2=c; last2=last1; last1=last;
+      }
+    }
+    cout<<last<<endl;
+    cin>>c1;
+  }
+return 0;
+}
+```
+
 
 
 
 
 ## 1159Palindrome
+
+令$D_{ij}$为使$x_{i...j}$成为回文串的最小需要插入字符个数
+$$
+D_{ij}=
+\left\{
+\begin{matrix} 
+1+min\{D_{i+1,j},D_{i,j-1}\}  &x_i\neq x_j\\
+D_{i+1,j-1} & x = x_j 
+\end{matrix}
+\right.
+$$
+
 
 ```c++
 #include<iostream>
@@ -435,9 +488,20 @@ int main() {
 
 
 
-## 1050
+## 1050 To the Max
 
++ 描述：给定由正整数和负整数组成的二维数组，子矩形是指位于整个数组中的大小为1×1或更大的任何相邻子数组。矩形的和是该矩形中所有元素的和。在这个问题中，总和最大的子矩形称为最大子矩形。
 
+  例如，数组的最大子矩形：
+
++ ```
+  0 -2 -7 0
+  9 2 -6 2
+  -4 1 -4 1
+  -1 8 0 -2
+  ```
+
++ 
 
 ## 2127
 
