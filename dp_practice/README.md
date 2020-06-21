@@ -402,6 +402,37 @@ int main() {//1 2 3 5 8 13 21 34 55 89
 
 ## 1159Palindrome
 
+```c++
+#include<iostream>
+#include<cstring>
+using namespace std;
+const int MAXN=5120;
+int D[MAXN][MAXN];
+
+int min(int a,int b) {
+    if(a<b) return a;
+    else return b;
+}
+
+int dp_palindrome(string a, int n) {
+    for(int t=1;t<n;t++) {
+        for(int i=0,j=t;j<n;i++,j++) {
+            if(a[i]==a[j]) D[i][j]=D[i+1][j-1];
+            else D[i][j]=1+min(D[i+1][j],D[i][j-1]);
+        }
+    }
+    return D[0][n-1];
+}
+int main() {
+    int n;
+    cin>>n;
+    string a;
+    while(cin>>a){
+        cout<<dp_palindrome(a, n)<<endl;
+    }
+}
+```
+
 
 
 ## 1050
