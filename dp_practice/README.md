@@ -486,7 +486,13 @@ int main() {
 }
 ```
 
+解法二：
 
++ 反转$x$得到$x^R$
++ 答案是$n-L$,L是$x,x^R$的LCS的长度
++ why？
+  + “leetcode" "edocteel"反转后直接加在后面一定回文，此时相当于插入n个字符
+  + "leetcodocteel" n-LCS=最短回文串需要插入的字符个数
 
 ## 1050 To the Max
 
