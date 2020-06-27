@@ -532,7 +532,49 @@ int main() {
   15
   ```
 
-  
+
+```c++
+#include<iostream>
+#include<cstring>
+using namespace std;
+
+int const MAXN=101;
+int a[MAXN][MAXN];
+
+int main() {
+    int n;
+    cin>>n;
+    int mx=1<<31;
+    int sum=0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++)
+            cin>>a[i][j];
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            for (int k = i; k < n ; k++) {
+                for (int l = j; l < n ; l++) {
+                    sum=0;
+                    for (int o = i; o <= k; o++) {
+                        for (int p = j; p <= l; p++) {
+                            sum+=a[o][p];
+                            if(sum>mx) {
+                                mx=sum;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    cout<<mx;
+    return 0;
+}
+```
+
+
+
+
 
 ## 2127
 
