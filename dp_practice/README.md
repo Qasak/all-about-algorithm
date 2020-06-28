@@ -538,7 +538,7 @@ int main() {
 #include<cstring>
 using namespace std;
 
-int const MAXN=101;
+int const MAXN=102;
 int a[MAXN][MAXN];
 int m_sum(int i,int j, int k, int l) {
     int sum=0;
@@ -554,14 +554,14 @@ int main() {
     cin>>n;
     int mx=1<<31;
     int sum=0;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++)
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++)
             cin>>a[i][j];
     }
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            for (int k = i; k < n ; k++) {
-                for (int l = j; l < n ; l++) {
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            for (int k = i; k <= n ; k++) {
+                for (int l = j; l <= n ; l++) {
                     sum=m_sum(i,j,k,l);
                     if(sum>mx)
                     mx=sum;
