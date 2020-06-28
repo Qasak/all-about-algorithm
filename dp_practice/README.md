@@ -534,6 +534,9 @@ int main() {
 
 
 ```c++
+//brute
+
+
 #include<iostream>
 #include<cstring>
 using namespace std;
@@ -570,6 +573,128 @@ int main() {
         }
     }
     cout<<mx;
+    return 0;
+}
+```
+
+
+
+```c++
+#include<iostream>
+#include<cstring>
+
+using namespace std;
+
+int const MAXN=103;
+int a[MAXN][MAXN];
+int dp[MAXN][MAXN];
+int m_sum(int i,int j, int k, int l) {
+    int sum=0;
+    for (int o=i; o <= k; o++) {
+        for (int p=j; p <= l; p++) {
+            sum+=a[o][p];
+        }
+    }
+    return sum;
+}
+
+int sum_c(int s, int k, int l) {
+    int sum=0;
+    for (int i = s; i < k; i++)
+    {
+        sum+=a[i][l];
+    }
+    return sum;
+}
+
+int sum_r(int s, int k, int l) {
+    int sum=0;
+    for (int j = s; j < l; j++)
+    {
+        sum+=a[k][j];
+    }
+    return sum;
+}
+
+int max(int a, int b) {
+    if(a>b) return a;
+    else return b;
+}
+
+int max(int a, int b, int c) {
+    cout<<a<<" "<<b<<" "<<c<<endl;
+    return max(max(a,b),c);
+}
+
+int main() {
+    // freopen("to_max.txt","r",stdin);
+    memset(a,0,sizeof(a));
+    memset(dp,0,sizeof(dp));
+    int n;
+    cin>>n;
+    int mx=1<<31;
+    int sum=0;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++)
+            cin>>a[i][j];
+    }
+
+
+    // for (int i = 1; i <= n; i++) {
+    //     for (int j = 1; j <= n; j++) {
+    //         for (int k = i; k <= n ; k++) {
+    //             for (int l = j; l <= n ; l++) {
+    //                 sum=m_sum(i,j,k,l);
+    //                 if(sum>mx)
+    //                 mx=sum;
+    //             }
+    //         }
+    //     }
+    // }
+
+    // for (int ii = 1; ii <=n; ii++) {
+    //     for (int jj = 1; jj <=n; jj++) {
+    //         for (int i = ii; i <= n; i++) {
+    //             for (int j = jj; j <= n; j++) {
+    //                 int row=sum_r(ii, i,j);
+    //                 int col=sum_c(jj, i,j);
+    //                 printf("a[%d][%d]:%d row:%d, col:%d\n",i,j,a[i][j],row, col);
+    //                 dp[i][j]=max(max(dp[i-1][j-1], dp[i-1][j-1]+row+col+a[i][j]),
+    //                 max(dp[i][j-1], dp[i][j-1]+col+a[i][j]),//col
+    //                 max(dp[i-1][j], dp[i-1][j]+row+a[i][j]));//row
+    //                 printf("dp[%d][%d]=",i,j);
+    //                 if(dp[i][j]>mx) mx=dp[i][j];
+    //                 cout<<dp[i][j]<<endl;
+    //             }
+    //         }
+    //     }
+    // }
+    
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            int row=dp[i][j-1]-dp[i-1][j-1];
+            int col=dp[i-1][j]-dp[i-1][j-1];
+            printf("a[%d][%d]:%d row:%d, col:%d\n",i,j,a[i][j],row, col);
+
+
+
+            // dp[i][j]=max(dp[i-1][j-1]+row+col+a[i][j],
+            // dp[i][j-1]+col+a[i][j],//col
+            // dp[i-1][j]+row+a[i][j]);//row
+
+            // dp[i][j]=max(max(dp[i-1][j-1], dp[i-1][j-1]+row+col+a[i][j]),
+            // max(dp[i][j-1], dp[i][j-1]+col+a[i][j]),//col
+            // max(dp[i-1][j], dp[i-1][j]+row+a[i][j]));//row
+
+            dp[i][j]=max(dp[i-1][j-1]+row+col+a[i][j],
+            max(dp[i][j-1], dp[i-1][j-1]+col+a[i][j]),//col
+            max(dp[i-1][j], dp[i-1][j-1]+row+a[i][j]));//row
+            printf("dp[%d][%d]=",i,j);
+            cout<<dp[i][j]<<endl;
+        }
+    }
+    cout<<mx;
+
     return 0;
 }
 ```
