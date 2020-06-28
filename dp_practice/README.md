@@ -540,7 +540,15 @@ using namespace std;
 
 int const MAXN=101;
 int a[MAXN][MAXN];
-
+int m_sum(int i,int j, int k, int l) {
+    int sum=0;
+    for (int o=i; o <= k; o++) {
+        for (int p=j; p <= l; p++) {
+            sum+=a[o][p];
+        }
+    }
+    return sum;
+}
 int main() {
     int n;
     cin>>n;
@@ -554,15 +562,9 @@ int main() {
         for (int j = 0; j < n; j++) {
             for (int k = i; k < n ; k++) {
                 for (int l = j; l < n ; l++) {
-                    sum=0;
-                    for (int o = i; o <= k; o++) {
-                        for (int p = j; p <= l; p++) {
-                            sum+=a[o][p];
-                            if(sum>mx) {
-                                mx=sum;
-                            }
-                        }
-                    }
+                    sum=m_sum(i,j,k,l);
+                    if(sum>mx)
+                    mx=sum;
                 }
             }
         }
