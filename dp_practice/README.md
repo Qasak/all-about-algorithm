@@ -613,7 +613,7 @@ int tmp[MAXN];
 
 
 int main() {
-    //freopen("to_max.txt","r",stdin);
+    freopen("to_max.txt","r",stdin);
     memset(a,0,sizeof(a));
     int n;
     cin>>n;
@@ -633,7 +633,8 @@ int main() {
                 tmp[col]+=a[row][col];
             }
             for (int p = 0; p < n; p++) {
-                sum=sum>0?sum+tmp[p]:tmp[p];
+                // sum=sum>0?sum+tmp[p]:tmp[p]; //greedy
+                sum=max(sum+tmp[p],tmp[p]);	//dp
                 if(mx<sum)
                 mx=sum;
             }
