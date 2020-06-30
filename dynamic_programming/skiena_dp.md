@@ -136,6 +136,8 @@ int main() {
 
 ## 近似字符串匹配
 
+> [How to Write a Spelling Corrector](https://norvig.com/spell-correct.html)
+
 需要定义一个费用函数告诉我们两个字符串之间离得多远:
 
 一个合理的距离度量要反映一个字符串转为另一个字符串所必须的*变动次数*
@@ -143,6 +145,10 @@ int main() {
 + 替换
 + 插入
 + 删除
+
+
+
+
 
 
 
