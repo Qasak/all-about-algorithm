@@ -104,17 +104,31 @@ $\C_n^k=\C_{n-1}^{k-1}+\C_{n-1}^k$
 ![image-20200630110626968](C:\Users\qasak\AppData\Roaming\Typora\typora-user-images\Evaluation order for binomial coefficient.png)
 
 ```c
-long binomial_coefficient(n,m)
-int n,m; /* computer n choose m */
-{
-    int i,j; /* counters */
-    long bc[MAXN][MAXN]; /* table of binomial coefficients */
-    for (i=0; i<=n; i++) bc[i][0] = 1;
-    for (j=0; j<=n; j++) bc[j][j] = 1;
-    for (i=1; i<=n; i++)
-    	for (j=1; j<i; j++)
-    		bc[i][j] = bc[i-1][j-1] + bc[i-1][j];
-    return( bc[n][m] );
+#include<iostream>
+#include<cstring>
+
+using namespace std;
+int const MAXN=101;
+long bc[MAXN][MAXN];
+
+long binomial_coefficient(int n, int m) {
+    for (int i = 2; i <= n; i++) {
+        for (int j = 1; j < i; j++) {
+            bc[i][j]=bc[i-1][j-1]+bc[i-1][j];
+        }
+    }
+    return bc[n][m];
+}
+
+int main() {
+    int n,m;
+    cin>>n>>m;
+    for (int i = 0; i <= n; i++) 
+        bc[i][0]=1;
+    for (int i = 0; i <= n; i++) 
+        bc[i][i]=1;
+    cout<<binomial_coefficient(n,m);
+    return 0;
 }
 ```
 
