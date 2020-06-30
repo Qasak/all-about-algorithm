@@ -89,7 +89,34 @@ $\C_n^k=\C_{n-1}^{k-1}+\C_{n-1}^k$
 
 如果在，我们可以通过从其他n-1中选择k-1其他项来完成子集（$\C_{n-1}^{k-1}$）
 
-如果不在，我们必须从剩余的n-1中选择所有k个
+如果不在，我们必须从剩余的n-1中选择所有k个（$\C_{n-1}^k$）
+
+递推离不开基础问题，加号左边一直往下，有$\C_{n-k}^0=1$
+
+另外，$\C_{m}^1=m$
+
+以上两种情况都可以作为基础情形
+
+加号右边的项可提升到$\C_{k}^k=1$
+
+下面是求值时的正确次序，已初始化的单元标记为A-K
+
+![image-20200630110626968](C:\Users\qasak\AppData\Roaming\Typora\typora-user-images\Evaluation order for binomial coefficient.png)
+
+```c
+long binomial_coefficient(n,m)
+int n,m; /* computer n choose m */
+{
+    int i,j; /* counters */
+    long bc[MAXN][MAXN]; /* table of binomial coefficients */
+    for (i=0; i<=n; i++) bc[i][0] = 1;
+    for (j=0; j<=n; j++) bc[j][j] = 1;
+    for (i=1; i<=n; i++)
+    	for (j=1; j<i; j++)
+    		bc[i][j] = bc[i-1][j-1] + bc[i-1][j];
+    return( bc[n][m] );
+}
+```
 
 
 
