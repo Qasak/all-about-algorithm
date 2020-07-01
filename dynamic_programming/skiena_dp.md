@@ -156,7 +156,39 @@ int main() {
 
 
 
-## 最长上升序列
+## 最长上升子序列
+
+最大上升串节(run)：元素必须物理上相邻
+
+```c++
+int main() {
+    int s[9]={2, 4, 5,5,1, 2, 6, 9, 18};
+    int l=0; // current left
+    int r=0; // current right
+    int ll=0;// longest left
+    int rr=0;// longest right
+    int n=9;
+    for (int i = 1; i < n; i++) {
+        if(s[i]>s[i-1]) { // 'run' can be extended,right+1
+            r=i;
+            if(r-l>rr-ll) { // current length > max length, update max length.
+                ll=l;
+                rr=r;
+            }
+        } else { // start a new 'run'
+            l=r=i;
+        }
+    }
+    cout<<ll<<" "<<rr<<endl;
+    return 0;
+}
+```
+
+
+
+
+
+
 
 
 

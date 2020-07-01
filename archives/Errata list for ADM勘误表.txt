@@ -1,0 +1,1099 @@
+
+Errata List for "The Algorithm Design Manual (2nd Edition)" by Steven Skiena
+
+Last addition: May 29, 2020
+
+Non-trivial errata are denoted with a (*).   I include a separate section
+at the end for commentaries -- additional suggestions / clarifications
+suggested by readers which are not really errata.
+============================================================================
+
+Fresh Errata (now with Section descriptions for e-Book readers):
+
+Page vii, line 13 (Preface): neither/or should be neither/nor, I guess.
+
+Page 6, paragraph 3, line 9 (Section 1.1) "...before returning at the rightmost point."  should be
+"...before returning at the leftmost point."
+
+Page 15, Last Paragraph, "cavallier" should be "cavalier".
+
+Page 17, below first equation, "since n ones is n" should be "The sum of n ones is n.
+
+(*) Page 17, line -1 AND line -4: The subinex of these two sums should bei 1, not i.
+
+(*) Page 18, line 5 (Section 1.3) -- The "..." is misleading.  Replace
+with "in the Harmonic numbers, $H(n) = \sum_{i=1}^n 1/i \approx \ln n$.
+
+Page 18, ine 6 "the index of the loop effects the exponent" should be "the index of the loop affects the exponent"?
+
+
+Page 18, line 6: "Geometric series" 
+Should be "Geometric progression" to be consistent with the previous bullet.
+
+Page 24, Figure 24 (Section 1.6) Adding commas between the digits would make
+it clearer
+
+(*) Page 25, line -5 (Section 1.6) "..., j=6" should be "..., j=4" to match original problem.
+
+Page 26, line 5 (Section 1.6)  -- Replacing {2,3,4} by {2,4,5} might offer
+a more direct connection to the reasoning underlying the caption of
+figure 1.10. (which is updated in figure 1.11)
+
+(*) Page 36, fifth and sixth expressions (Section 2.2) can be clarified
+
+3n^2 - 100n + 6 is not \Omega(n^3) because because for any [positive] c I choose 3n^2 - 100n + 6 < cn^3 for any n > 3/c+3;
+
+3n^2 - 100n + 6 = \Omega(n)  because I choose c = 1 and n < 3n^2 - 100n + 6 when n > 34;
+
+Page 44, line 3 (Section 2.5.3) for p="Skiena." the period should be moved outside the quotes.
+
+Page 46, line -17 (Section 2.6): "this definition is the same" could be "this equivalence is the same"
+
+(*) Page 51, line 5 (Section 2.7) -- "dividing" should be "multiplying".
+
+(*) Page 53, all mentions of 1,818 (Section 2.8): If, as I claim earlier that m>=2 in defining the pyramidal numbers, then there are in fact only 1,816 such numbers under a billion.   I included in my count the values for m=0 and m=1, both of which are zero by the defining formula n = (m^3 - m)/6.
+
+(*) Page 55, line -10 (Section 2.9.1) "a d-dimensional hypercube of length n^(1/d) on each side has volume d."  should be
+"a d-dimensional hypercube of length n^(1/d) on each side has volume n." 
+
+Page 57, line -5 (Exercise 2-3) "prestiferous" should be "pestiferous"
+
+Page 59, 2-14, "f1(N)" should be "f1(n)"
+
+Page 62, problem 2-36 (Section 2.10) - the output statement is improperly indented.
+
+(*) Page 66, line -13 to -11 (section 3.1.1) --  What has been lost with dyamic arrays
+concerns the worst-case insertion cost, so "array access" should be changed to "insertion" in these lines.
+
+Page 67, line -18 (Section 3.1) The $\lg n$s in the formula should be written
+as $\lceil \lg n \rceil$.
+
+(*) Page 67, line -18 (Section 3.1) This analysis can be looked at in a different
+way, which yields a simpler and more precise (though asymptotically identical)
+answer.   If we sum the number of copy operations as they are made, we get:
+	Sum from (i=1) to (log n) of n/(2^i)
+instead of
+	Sum from (i=1) to (log n)-1 of [i*n/(2^(i-1))]
+which is counting the number of elements which get copied i times, times i.
+When n=2^j implied in the analysis, both summations are asymptotically the
+same, approaching 2n. 
+
+(*) Page 70, delete_list/predecessor_list() subroutines -- A weird thing can
+happen if you insert multiple elements with the same key.  If you insert a
+value, then insert a different one, finally inserting the same value as the
+first insertion again (i.e. 1, 2, 1), when you try to delete the head node's
+'1' value the delete_list() subroutine will locate the incorrect predecessor
+node and basically break the program by setting the predecessor's 'next' value
+to point to it's self and delete the wrong node.
+
+This is why it is bad to insert two distinguishable elements with the the same
+key in a data structure.
+
+Page 71, Stacks and queues, "... container to denote a data structure"
+Container is an abstract data type. Not a data structure.
+
+Page 72, Dictionaires, "primary operations of dictionary support are"
+Should be "...dictionaries support are"
+
+Page 72, Insert(D,x) should be Insert(D,k,x)
+
+Page 74, The operations in the table should probably use A (for array) instead of L (for list which is used later).
+
+(*) Page 75, table -- Singly-linked deletion can be done in constant time by copying the next value to over-write the key of the deleted node, then point to the next next element and free what was originally the node after it.
+
+function delete (list *elementToDelete)
+    copy elementToDelete->next's DATA into elementToDelete's DATA
+    set elementToDelete->next to point to elementToDelete->next->next
+    delete elementToDelete->next
+
+It is also true that singly-unsorted lists can maintain minimum and maximum pointers for constant time access given constant time insert and linear time delete.
+
+Page 75, table head "Double" should be "Doubly"
+
+Page 77, line 3: "worse case" should be "worst case"
+
+Page 84, "priority queues are data structures"
+Should be "is an abstract data type".
+
+Page 85, line 6 of the paragraph under the table (Section 3.5) -
+"the minimum entry have" should be "the minimum entry we have".
+
+Page 85, table, Delete-min row and Balanced tree column (Section 3.5) -- in fact there is a way to do Delete-Min in O(1) time, but it is a little more complicated than the method I describe.
+
+(*) Page 89, formula (Section 3.7): There is some concern of unnecessary collisions with the current hash function because leading characters with 0 values do not contribute to the sum.   The problem is minor, but could be solved by adding $\alpha^|S|$ to the total outside the sum.
+
+Page 91, "count of the n characters"  Should be "count n of the characters"
+
+Page 92, line -8 (Section 3.7.3): "...whether this adds something new to add to the database" is clearer as "...whether this adds something new to the database"
+
+Page 98, Figure 3.13 caption: Should state that the string length is $n$.
+
+Page 99, 3-5:  "overhead fraction" should be "storage efficiency ratio"
+
+Page 100, 3-10: first bullet, "object is inserted.."
+Remove double dot.
+
+(*) Page 101, 3-14, sum xj < y xi should be sum_i=0..k xi
+
+(*) Page 105, line 10 (Section 4.1): "polygon of smallest area" should be
+either "convex polygon of smallest area" or "polygon of smallest perimeter"
+
+Page 107, line 4, "Consider the following considerations"
+should be "Consider the following issues"
+
+Page 111, pq_parent / pq_young_child
+Adding the (default) int return types might clarify the code.
+
+Page 112, pq_insert
+Printf %d --- this might not work for some item_types.
+
+Page 113, line -1 (Section 4.3.3):  Return type should be item_type, not int.
+
+(*) Page 114 line -4 (Section 4.3.3): As implemented in the book, my heapsort
+is not in-place, because it creates the priority queue in q, not s.
+
+Page 116, part 2 of solution to the "Stop and Think" section": the last line
+should read "since the top k levels have $2^k - 1$ elements"
+
+Page 116, In the Stop&Think paragraph, "...; you need only determine"
+Should be "you need only to determine"
+
+Page 116, last line, with i = 1 with count = k Should be "i = 1 and count = k"
+
+Page 118, line 19  (Section 4.4) "waiving" should be changed to "waving" in the sentence "I announced, waiving my hand with a flourish"
+
+Page 121, Figure 4-4, divide is not quite consistent with the definition on the prev page.
+It would have been divided into "merg" and "esort".
+
+Page 121, line -2 (Section 4.5) - "2^k pairs sorted list" should be "2^k pairs of sorted lists".
+
+Page 122, line 4, Instead of lg(n) or lg_2(n), it would be better as log2(n).
+
+Page 123, line -6, "the the" should be "the"
+
+Page 124, Figure 4.5, last row of animation: letter Q printed as letter O
+
+Page 125 line 11, Instead of lg(n) or lg_2(n), it would be better as log2(n).
+
+Page 129, line 19 (Section 4.7): "We could sort sorting" should be "We could sort"
+
+Page 131, paragraph 3, line 3 (Section 4.8) - "getting the the data" should be "getting the data".
+
+Page 131, Line -7: (Section 4.8):  The correct link to the sorting benchmark is:
+http://sortbenchmark.org/.
+
+page 132, line -1, "a big win over the n/2 comparisons expect"
+Should be "expected"
+
+(*) page 132, if q appeares before S[n/2] it must reside in the top half.
+Using left and right instead of top and bottom should clarify this.
+
+Page 133, missing space before "binary_search" in the code.
+
+(*) Page 133, line -7, return "high" instead of "low" on an unsuccessful search.
+
+Page 137, "... while Case 2 holds mergesort and binary search"
+should be "While Case 2 hold FOR mergesort"
+
+Page 139, 4-5: "set of numbers"
+Should be "multi set" or "bag" since it contains duplicates.
+
+Page 140, 4-10, Assume that "k > 1" because there is no way to find a
+solution in O(log n) for k=1 if unsorted.
+
+Page 142, 4-27. "n" is not defined.  It denotes the number of edges/vertices of the simple polygon.
+
+Page 143, 4-33, "an i index such as ai = i" should be "an index i such that ai = i"?
+
+Page 143, 4-34, sequence of distinct integers {a1, a2, ..., an}.
+Should be "... distinct integers a = {a1, a2, ..., an}" because a is referred below.
+Also there should be "... find an integer x such that 1 <= x <= m ..."
+Otherwise I could just say the answer is -inf.
+
+(*) Page 144, 4-44 -- Assume that retreive_min returns the minimum value but leaves the stack intact.   And call the data structure a "Super-stack" if you object to stacks having this paper.
+If instead the operation is extract-min that removes the element frm the stack, the problem becomes similar to 4-29.
+
+(*) Page 147 line -1: (Section 5.1): We confess that all implementations in this
+book are designed to work ONLY on simple graphs.
+
+Page 150, line -1: Marberger should be spelled Marburger.
+
+Page 152, lines 3 and 4 of the table (Section 5.2): "small" and "big" should be "sparse" and dense.
+
+Page 157, par 2, "user demands become" should be "user demands became"
+
+Page 161, line 3 (Section 5.5) - "such printing" should be "such as printing".
+
+(*) Page 164, line 4 (Section 5.6) -- this implementation sets processed[v]=TRUE at the top of the while loop, where as the pseudocode does so at the bottom.
+Presuambly the bottom is the right choice, although it generally should not matter.
+
+Page 164, line 8 (Section 5.6) - there is a right parenthesis missing at the end of this line. -- ERRATA to the ERRATA: It is not missing :)
+
+Page 170, in the second bulleted paragraph (Section 5.8), the spelling "descendents," which appears twice, should be "descendants."
+
+Page 169, function complement(), There could/should be return type int as is the case for example with the function partition() on page 124.
+
+Page 170-171 (Section 5.8) - there is an inconsistency between how the exit time is incremented between the psuedocode and the real code.   I don't think it matters for the correctness of algorithms using it, since the time just has to inrease with each operation, but I think I like the code better.
+
+Page 172, Par 1, Depth-first search "use" should be "uses"
+
+(*) Page 177, line 3 (Section 5.9) - comment should be "is the parent of the vertex the root of the DFS tree?".
+
+(*) Page 180, second and third bullet points (Section 5.10) - the word "completed" in both paragraphs should be "processed".
+
+Page 183, line 3 (Section 5.10) - "edges that point vertices" should be "edges that point to vertices".
+
+Page 184, Chapter Notes, "... best described in the old [Ski90]. and new editions..." Remove the extra dot.
+
+Page 187, 5-13 vs. 5-14 vs. 5-15 - different wording for the definition of vertex cover, but they all mean the same think
+
+(*) Page 187, 5-16 (b) and (c) - "find a maximum independent set of G"
+should be "find a maximum-weight independent set of G"
+
+Page 188, 5-17, "bounds gives" should be "bounds give"
+
+(*) Page 188, line 4 of problem 5-20 (Section 5.11) - "is a subset of U" should be "is a subset U".
+
+Page 195, line -5 (Section 6.1) - "out of new tree vertex" should be "out of each new tree vertex".
+
+(*) Page 196, Kruskal-MST(G) Missing "count++" after adding edge in the pseudocode.
+
+Page 197, last line, last word (Section 6.1.2) - "psuedocode" -> "pseudocode"
+
+Page 199, line -3 (Section 6.1.3) - "The height ... stay the same" should be "The heights ... stay the same"
+
+Page 200, line 1 of unions_sets (Section 6.1.3) - the return type should not be int, because the function returns nothing.
+
+Page 201, line 3, 6 (first occurence) and 7 (Section 6.1.3) -  "height-2" and "height-3" should be "height 2" and "height 3" respectively.
+
+Page 202, line 14 (Section 6.1.4) - "the highest degree node ... is small" should be "the highest degree of a node ... is small".
+
+Page 204, line 8 (Section 6.2) - "the right arm to visits" should be "the right arm visits".
+
+Page 207, -2, "three lines" Should be "four lines" :-)
+
+Page 217, -4, "where as" should be "whereas"
+
+Page 218, 2, "is in to solving" should be "is in solving"
+
+(*) Page 219, Figure 6.13 (Section 6.5.2): The graph showing the residual flow
+R(G) has a directed edge from the center node to the top center node (with
+weight 3), which should be undirected.
+
+(*) Page 220, line 10 -- the parent array is undeclared: presumably global
+in the full program.
+
+Page 222, Analysis line 1, "the the optimal" should be "the optimal"
+
+Page 227, 6-13, "of, m union" Should be "of m union"
+
+Page 227, 6-18, "vertices have can have" Should be "vertices can have"
+
+Page 228, 6-18 (a), "non-edges have a cost of inf"
+Non-edges are vertex pairs with no edge between them, i.e. it never pays to take an infinite cost non-edge.   This is true in any shortest path problem.
+
+Page 231, line -7 (Section 7.1): "$S_k = S_k - a_k$ " ==> $S_k = S_k - \{a_k\}$
+
+Page 231, section 7.1, second paragraph: "each one possible configuration" ==> "each possible configuration"
+
+Page 232, just before is_a_solution, "The application-specific parts of this algorithm consists of five subroutines."
+Should be "The application-specific parts of this algorithm consist of five subroutines."
+
+Page 232, last paragraph, "... of vector a from ..." should be "... of vector a form ..."
+
+(*) Page 232, backtrack code (Section 7.1) - the call to unmake_move() should be before the if (finished) check, otherwise the finished solution will be unmade.
+
+Page 232, line -6 (Section 7.1) : "elements of vector a from a complete solution" -> "elements of vector a form a complete solution".
+
+Page 233, first line, construct_candidates(a,k,input,c,ncandidates)
+Should be construct_candidates(a,k,input,c,&ncandidates) to be consistent with the code.
+
+Page 234, first par, "Printing each out"
+Should be "Printing out each"
+
+Page 234, par just under generate_subsets, "of moves construct_candidates"
+Should probably be "of moves as returned from construct_candidates"
+
+(*) Page 235: construct_candidates (Section 7.1.2) : The line:
+for (i=0; i<k; i++) in_perm[ a[i] ] = TRUE;
+should be
+for (i=1; i<k; i++) in_perm[ a[i] ] = TRUE;
+
+Page 236, is_a_solution could/hould have return type bool.  Also pages 233 and 241
+
+(*) Page 237, line 8 of construct_candidates (Section 7.1.3) should be "for (i=0; i<k; i++) in_sol[a[i]] = TRUE;".
+
+Page 238, par 1 of 7.2 Search pruning, "really exists"
+Should be "really exist"
+
+Page 239, line -7 (Section 7.3) - "board" ==> "boardtype"
+
+(*) Page 240, line -6 of construct_candidates should be "for (i=1; i<=DIMENSION; i++)".
+
+Page 247, line -1 (Section 7.5) - "access" should be "assess".
+
+Page 247, line -12 (Section 7.5) - "gradient-descent search" should be "local search"
+
+Page 250, line -10 (Section 7.5.1) - "exactly how unordered pairs" should be "exactly how many unordered pairs".
+
+(*) Page 256, formula (Section 7.5.3):  The external negative sign on the equation reverses the condition.
+
+It should be: e^((C(Si) - C(S[i+1]))/kT) >= r
+
+(*) Page 256, Acceptance criteria, C(s_i+1) < C(s_i)
+Incosistent with code on prev page, where strict inequality is used.
+
+(*) Page 258, line 13 (Section 7.5.3) should be "transition(s,t,i2,i1);
+
+Page 260, line 7 (Section 7.5.4) "are constants governing" ==> "are weights governing"
+
+Page 260, line 8 (Section 7.5.4) "inverse function" ==> "decreasing function".
+
+Page 260, line 3, "transition mechanisms including"
+Should be "transition mechanisms include"
+
+Page 263, Fig. 7.12 (Section 7.7):  Prefix GA and suffix AA should yield GAAA not GAAG.
+
+Page 266, 7.8, line 3, "many techniques relies" Should be "many techniques rely"
+
+Page 273, Line -1, "for each subproblems" Should be "for each subproblem"
+
+Page 277, line 4 (Section 8.1.2) $0 \leq k \leq n$ ==> $0 < k < n - 1$.
+
+Page 280, line 2, in comment (Section 8.1.4) - "computer" should be "compute".
+
+(*) Page 280, line 8 could be "for (i=2; i<=n; i++)". For i = 1, bc[1][0] and bc[1][1] have already been evaluated in the lines above and the inner loop will not even run.
+
+(*) Page 280, the code in binomial_coefficient(), long bc[MAXN][MAXN]
+Should be long bc[MAXN+1][MAXN+1]
+
+Page 280, the three bullet points should move the . out of the quote:
+"spot." => "spot".  "agog." => "agog".  "our." => "our".
+
+Page 281, 8.2.1 Par 1 line 4, "Let i and j be the last character" --double error
+Should be "Let i and j be the indexes/indices of the last characterS".
+
+(*) Page 281, bullet points 2 & 3 seem to be copy-paste-mixed-up.
+I believe they should read as follows:
+1) D[i,j-1]+1. This means that there is an extra character in the text to account for,
+so we do not advance the pattern pointer and pay the cost of an insertion.
+2) D[i-1,j]+1. This means that there is an extra character in the pattern to remove,
+so we do not advance the text pointer and pay the cost on a deletion.
+
+Page 282, the commentary in the code, "We use odd index conventions"
+could/should be "We use special index conventions"
+
+(*) Page 283, the code of string_compare()
+The cycle calling row_init(i) and column_init(i) goes "for (i=0; i<MAXLEN; i++)" but should be "for (i=0; i<=MAXLEN; i++)"
+
+Page 285, in describing the the edit steps between the srouce and target strings: "... and finally replace the "t" with a "d"" should be
+", replace "t" with a "d" and finally match the remaining three characters "not"."
+
+Page 290, just before first bullet, "... the entire sequence?"
+Remove "?" - it is not a question.
+
+(*) Page 291, table (Section 8.3) - the Length l_i indices should be "1 2 2 3 1 4 4 5 5".   Also add the entry l_0 = 0 to the table.
+
+Page 291, line 12, "against (up to) i-1 <= n values".
+Should be "against (up to) i-1 < n values".
+
+Page 293, line 1 of first bullet point (Section 8.4) - "top run i to run bottom j" should be "top run i to bottom run j".
+
+Page 294, line -11 - "I, would volunteer" should be "I would volunteer".
+
+(*) Page 297, line 1 below the figure (Section 8.5) - "p[j] - p[k]" should be "p[j] - p[i-1]".
+
+(*) Page 300, under the second min in the first formula - "i=k" should be "k=i".
+
+Page 300, lines 6-8 (Section 8.6) Each of $M[...]$ should be $M'[...]$.
+
+Page 302, line -6 (Section 8.7.1) - "we get are stuck" should be "we get stuck".
+
+Page 303, line 22 (Section 8.7.2) - "solution is entire" should be "solution is the entire".
+
+Page 303, 8.7.2, line 3 after the heading, "how long it take"
+Should be "how long it takes"
+
+Page 311, 8.5 b, "in order of nonincreasing order"
+Should be "in order of nonincreasing"
+
+Page 312. Exercise 8-9. "programming" ==> "dynamic programming".
+
+Page 312. Exercise 8-10. "subset $I \in S$" ==> "subset $I \subset S$". "$S = s_1, ... , s_n$ ==>"$S = \{s_1, ..., s_n\}$".
+
+(*) Page 315, line 2 of problem 8-23 (Section 8.10) - "optimal worst case cost" should be "optimal expected cost". Otherwise the probabilities are irrelevant at least if they are all larger than 0.
+
+Page 315, 8.24, "denominators" => "denominations"
+
+Page 319, CloseEnoughPair(S,t) The min argument does not need to be an absolute value, because the items are sorted.  So it could be min_i (s_i+1 - s_i).
+
+(*) Page 320, line -3 (Section 9.2.2): the last step of the algorithm "Longest Increasing Subsequence" has two costs "c_del" and no "c_sub", I think one of the "c_del" should be changed to a "c_sub".
+
+(*) Page 320, line 6 of paragraph 9.2.2 (Section 9.2.2): ", and substitution (c_del)" -> ", and substitution (c_sub)".
+
+Page 321, line 9, "the the" => "the"
+
+Page 321, 9.2.3, line 2, "an integer d that a = bd" => "an integer d such that a = bd"
+
+Page 321, last line, "namely" => "namely:"
+
+Page 322, 9.2.4, line 4, "must lie" => "lies"
+
+Page 323, Figure 9.2
+3-SAT, not the general sat, was reduced to Integer Programming.
+
+(*) Page 326, lines 3 and 4, occures twice:
+"S - V" should be "V - S"
+
+Page 327, line 4 of the IndependentSet algorithm (Section 9.3.3) - "movie X to I" should be "movie x to I".
+
+Page 332, line 13 (Section 9.5.1) -- We restrict each integer programming variable ... to values of either 0 or 1, but (should be 'by') adding constraints ...
+
+(*) Page 327, last line on the page, "... where |S| <= k ..."
+Should be "... where |S| >= k ..." 
+
+Page 337, line 10, "four hundred" ==> "three hundred"
+
+Page 341, 9.9.1, line 1, "P vs NP" should be "P vs. NP".
+
+Page 343, line 5, "A fast algorithms" Should be "A fast algorithm"
+
+Page 345, in the VertexCover pseudocode, "edge (u,v) <= E"
+should be "edge (u,v) element E"
+
+Page 348, line 6 (Section 9.10.3) - "where seek to retain" should be "where we seek to retain".
+
+Page 351, 9-3, "the traveling salesman problem of page 318"
+Should be "on page" and it's actually defined on page 319.
+
+Page 351, 9-7, "does there exist k subsets"
+Should be "do there exist k subsets"
+
+Page 369, "How big should the table be?" line 1 (Section 12.1): "..m should about the same..." missing a 'be' "..m should be about the same..."
+
+(*) Page 369-370 lines -7 to +2 (Section 12.1) -- $m$ has been used here to denote both the modulus (good) and the length of the string (bad).   Let us hash a window of length $k$ in string $s$ starting from position $j$.  Then the formulae and text should be:
+
+\[ H(S,j) = \sum_{i=0}^{k-1} \alpha^{k-(i+1)} \times char(s_{i+j})  ~\mod~ m \]
+
+and then
+
+\[ H(S,j+1) = (H(S,j) - \alpha^{k-1} char(s_j)) \alpha + char(s_{j+k}) ~\mod~ m \]
+so hash codes of successive $k$-character windows of a string can be
+computed in constant time instead of $O(k)$.
+
+Page 374, bullet 4 line -1 (Section 12.2): "...(page 109)" missing a period "...(page 109)."
+
+Page 381, line -1 (Section 12.4): "..deletion operations will done.." should be "..deletion operations will be done..."
+
+Page 391, line -11 (Section 12.6): "..nearest nearest neighbor search.." should be "..nearest neighbor search.."
+
+Page 397, line -7 (Section 13.1): "is one of most" should be "is one of the most"
+
+Page 393, line 3 (Section 13): "..terrific overview to the fundamental problems.." should be "..terrific overview of the fundamental problems.."
+
+Page 394, line 15 (Chapter 13 intro): Chapara should be Chapra.
+
+Page 399, line 5 (Section 13.2): "all these variants is NP-complete" should be "all these variants are NP-complete"
+
+Page 399, line 3 (Section 13.2) - the closing bracket should be at the end of the paragraph, before the full stop.
+
+Page 404, line 3 (Section 13.4): "of the matrix m" should be "of the matrix M"
+
+Page 414, line 8 (Section 16.3) -- Word "on" repeated twice.
+"CLP appeared to be fastest on on linear program- ming problems and lp solve on mixed integer problems."
+
+(*) Page 428, line 7, (Section 13.2) - "cheapest elements first" should be "most valuable elements first".
+
+(*) Page 428, line -12 (Section 13.10): a "b" is missing in the right hand side of the formula.
+
+Page 432, line -8 (Section 13.11): "enables us move" should be "enables us to move"
+
+Page 435, line 4 (Chapter 14 intro): "fasciles" -> "fascicles".
+
+Page 439, line 20 (Section 14.1): "an cache-oblivious" should be "a cache-oblivious"
+
+Page 443, line 8 (Section 14.2): "splay trees. which" should be "splay trees, which"
+
+Page 444, line 10 (Section 14.2): "implementation" should be "implementations"
+
+Page 445, line 2 (Section 14.3): Problem description should be:
+Find the key greater than or equal to exactly k of the n keys.
+
+Page 446, line 11 (Section 14.3): Should be noted that the described algorithm is called quick-select.
+
+Page 447, line -5 (Section 14.3): "lower bower bound" should be "lower bound"
+
+Page 450 (Section 14.4) one closing bracket is missed in both swap calls.
+For example swap[a[i], a[Random[i, n]]; should be swap[a[i], a[Random[i, n]]];
+
+Page 453, line 2 of the "Binary counting" bullet point (Section 14.5) - "is defined by the items of that S are in S'" should be "is defined by the items of S that are in S'".
+
+(*) Page 457, line -12 (Section 14.6): "a_i <= 1 + max(a_1, ..., a_i)" should be
+"a_i <= 1 + max(a_1, ..., a_{i-1})".
+
+Page 466, Implementations (Section 14.8): "The Calendar class in java.util.Calendar implements the Gregorian calendar in Java." should be "The class GregorianCalendar derived from the abstract super class Calendar in the package java.util implements the Gregorian calendar in Java."
+
+Page 466, line -2 (Section 14.8): "calendars Three" should be "calendars. Three"
+
+Page 480, line 2 (Section 15.1): "algorithms. including" should be "algorithms, including"
+
+(*) Page 485, Kruskal(G) (Section 15.3): missing "++count" in the pseudo code.
+
+Page 488, line -9 (Section 15.3): "an graph" should be "a graph"
+
+(*) Page 490, line 18 (Section 15.4): "path from v" should be "path from x"
+
+(*) Page 491, shortest path in a DAG recurrence (Section 15.4): $(x,i)$ should be $(i,j)$,
+so it reads: $d(s, j) = \min_{(i, j) \in E}  { d(s, i) + w(i, j) }$
+
+Page 502, line -6 (Section 15.7): remove "without" which is duplicated.
+
+Page 506, line 13 (Section 15.8): "whose the vertices" should be "whose vertices"
+
+Page 506, line -8 (Section 15.8):  "minimizing the flow" should read "maximizing the flow".
+
+(????) (*) Page 510, maximum flow equation (Section 15.9): The equation won't work with the given definition of x_ij.
+The definition should be should be extended to cover the case when there is no such edge (i,j) and in that case x_ij=0.
+
+Page 514, line 15 (Section 15.10): "especially for true for" should be "especially true for"
+
+Page 520, line -7 (Section 15.12): "there must always a" should be "there must always be a"
+
+Page 522, line 3 in Notes (Section 15.12): "Fary's" -> "F脙隆ry's"
+
+Page 529, line -9, Word "set" repeated twice.
+"Greedy randomized adaptive search (GRASP) heuristics for independent set set have been implemented"
+
+Page 530, line -5 (Section 16.3): "no edge both" should be "no edge where both"
+
+(????) Page 535, (Section 16.4): the max min formula in the middle of the page, The upper limit of the min function should probably be |T| - 1 because we use v_i+1. This however still does not cover the case where we have exactly 1 item in the partial tour T, which should probably be covered separately by using a formula with just MAX.
+
+Page 538, line 5 (Section 16.5): "traveling salesman problem G'" should be "traveling salesman problem on the graph G'"
+
+Page 538, line 5 (Section 16.5): "distance 1 in 'G" should be "distance 1 in G'"
+
+Page 552 lines 24 and 25 (Section 16.19): "... graph $h$ with the names of
+vertices of graph $g$ ..." should be "... graph $H$ with the names of
+vertices of graph $G$ ...".
+
+(*) Page 555, input description (Section 16.10): "A subset of vertices T element V."
+should be "A subset of vertices T subset V."
+
+(*) Page 555, line -3 (Section 16.10): "S = V" should be "T = V"
+
+Page 560, line 2 (Section 16.11): "rank order" should be "rank"
+
+Page 560, line 4 (Section 16.11) - "player should be at" should be "player should beat".
+
+Page 562, line -5 (Section 17): "most every" should be "almost every"
+
+Page 564, line -6 (Section 17.1): "intersect in more or less than" should be "intersect AT more THAN or less than"
+
+(*) Page 570, line 17 (Section 17.2): "counterclockwise around v" ... v was not defined.
+
+Page 570, line -2 (Section 17.2): "for from" should be "for"
+
+Page 571, line 12 (Section 17.2): "Avis's lhs" should be "Avis's lrs"
+
+(*) Page 573, line 14 (Section 17.3): The Delauney triangulation
+"maximizes the minimum angle", *not* "minimizes the maximum angle".
+
+Page 574, line -2 (Section 17.3): "for from" should be "for"
+
+(*) Page 576, line 3 (Section 17.4): "are closer to p_i than any other point in S"
+should be "are closer to p_i than TO any other point in S"
+
+Page 578, line -15 (Section 17.4): "for from" should be "for"
+
+Page 581, line 23 (Section 17.5): "any other point in S" should be "to any other point in S"
+
+Page 592, line 5 (Section 17.8): "intersect in at" should be "intersect at"
+
+Page 594, line 5 (Section 17.8): "offers" should be "offer" 
+
+Page 595, line 2 (Section 17.9): "bins with capacity" should be "bins with capacities"
+
+Page 596, line 11 (Section 17.9): "requiring them sit" should be "requiring them to sit"
+
+Page 603, line 1 (Section 17.11): "a optimal" should be "an optimal"
+
+Page 605, line -8 (Section 17.12): "Puecker" should be "Peucker"
+
+Page 620, line 1 of the first bullet in the bullet list (Chapter 18 intro): "To my taste, this remains is the best introduction to string algorithms." should be "To my taste, this remains the best introduction to string algorithms."
+
+Page 621, line 7 (Section 18.1): "Finding a set cover" ... The indefinite article should not be in italics.
+
+Page 621, line 10 (Section 18.1): "let you" should be "lets you"
+
+Page 624, line -13 (Section 18.1): missing . at the end of the paragraph.
+
+Page 626, line -2 (Section 18.2): "enables us modulate" should be "enables us to modulate"
+
+Pahe 632, line -13 (Section 18.4): "depend" should be "depends"
+
+Page 634, line 18 (Section 18.4): "has incentive" should be "has an incentive"
+
+Page 642, line -10 (Section 18.6): "are a planning" should be "are planning a"
+
+Page 642, line -7 (Section 18.6): "had the NSA had been" should be "had the NSA been"
+
+Page 647, line 20 (Section 18.7): "sweep though" should be "sweep through"
+
+Page 648, line 12 (Section 18.7): "we need consider" should be "we need to consider"
+
+Page 651, line 5 (Section 18.8): "dynamic program" should be "dynamic programming"
+
+Page 651, line -2 (Section 18.8): "is large field" should be "is a large field"
+
+Page 658, line 8 (Section 19.1.1): "Max-Planck-Instutut" -> "Max-Planck-Institut"
+
+Page 659, second paragraph of 19.1.4 - "University of Augsberg" should
+be "University of Augsburg".
+
+Page 695, (Bibliography) [MV99]: "econometical" -> "econometric".
+
+
+/* All errata below *should* have been corrected in the revised printing */
+
+
+Page viii, line -3 -- add a space after http://www.cs.sunysb.edu/~algorith
+
+Page 10, line -5 -- change "mutally" to "mutually"
+
+(*) Page 14, line 5: "reducing the number of overlapped segments from four to two" -->
+"reducing the number of overlapped segments from five to two"
+
+Page 17, line 12: "at the end this chapter" --> "at the end of this chapter"
+
+Page 17, line 14: "Summation formula" --> "Summation formulae"
+
+Page 17, line -5 -- change "We already encountered arithmetic progressions
+when we saw" to "We will encounter the arithmetic progression"
+
+(*) Page 17, line -8 - the pairing argument of the summation only works for
+even values of $n$.  It can be extended by computing twice the desired sum
+as the middle sum, with the upper limit changed from n/2 to n =
+twice the expression on the right, that is, n(n+1), and then follow this
+with one more line of text: "so that (desired sum) = n(n+1)/2."
+
+(*) Page 18 line 8 -- the sum of a geometric series should be "(a^(n+1) - 1)/(a - 1)" instead of
+"a*(a^(n+1) - 1)/(a - 1)"
+
+Page 21, Figure 1.9: Permutations -- NOT an erratum!!
+{4,1,5,2,3} -> 4 + {1,4,2,3} is supposed to capture the induced permutation
+left after removing the head.  {1,5,2,3} is not a permutation of 1 to 4.
+Another example would be {3,1,5,4,2} -> 3 + {1,4,3,2}.  Any permutation is
+an arrangement of the number 1..n, so deleting the first element renumbers
+the rest.
+
+Page 27, line 3 - Change "Corman" to "Cormen".
+
+Page 27, line -2 -- change the sentence to "That is, give an $S$ and $T$
+where the algorithm does not find a solution which leaves the knapsack
+completely full, even though a full-knapsack solution exists."
+
+(* Kindle only) Page 35 -- The Kindle edition has certain >= signs turned into
+equal signs, as shown in http://www.nsds.net/adm_kindle_bugreport.htm
+
+(*) Page 36, fifth inequality  (Omega(n^3)) -- "because I choose c=3" should be
+"because I choose c=1"
+
+(*) Page 43, line 3 - "S(n) = >=": extra = should be deleted.
+
+(*) Page 45, code at bottom -- There is an inconsistency between the variable names
+x,y,z in the problem definition and the program fragment.  The easiest resolution
+is to reverse the variable names y and z in the program fragment (lines -3 and -5)
+
+Page 47, caption of figure 2.7: "per node as d^h leaves": 'as' should be 'has'.
+
+Page 49, last line of Figure 2.8 -- (Q) should be (S)
+
+(*) Page 50, line -5 -- "dividing" should be "multiplying".
+
+Page 54, line -5 - "Ackerman" should be "Ackermann"
+
+Page 63, exercise 2-38 -- 26,397 should be 26,797.
+
+Page 64, exercise 2-50: Perhaps Ramanujan numbers should be called "Ramanujan-Hardy" numbers.
+
+Page 64, line 18: The comma in the beginning of the line should be moved to the end
+of the preceding line.
+
+Page 68, line 2: "declared at compiler time" --> "declared at compile time"
+
+Page 68, line 4: "address (i.e. , pointer) of a particular variable" -->
+"address of (i.e., pointer to) a particular variable"
+
+Page 69, line -5: "the place pointed to l" --> "the place pointed to by l"
+
+Page 70, line -13: The comment "splice out out list" should be "splice out of list"
+
+(*) Page 70, line 4 -- The error message is too strong a side-effect since
+several applications (including delete_list) stumble upon it naturally.
+Downgrade the error to a comment.
+
+Page 73, line -3 -- "reveal" should be "reveals".
+
+Page 73, line 6 -- "Prececessor(D, k) or Successor(D,k)" -->
+"Prececessor(D, x) or Successor(D,x)"
+
+Page 78, line -14 -- "uniquely identities" should be "uniquely identifies"
+
+Page 81, line -13 -- "(p)" is unnecessary.
+
+Page 83, problem part 3 -- we can drop "search" for the allowable operations.
+
+(*) Page 85, line 4 -- the clause "followed by search" is unnecessary.
+
+Page 98, line 3 of first para: "has to more" should be "has led to more"
+
+(*) Page 101, line 2 -- change "less than $y$" to "less than $k$".
+
+(*) Page 110, line -1 -- change $n/2$ to $k/2$
+
+(*) Page 115, line -10 -- the loop could/should go from "q->n/2  to 1" instead
+of "q->n  to 1", although what is there works correctly.
+
+Page 117, line 3 from top --  "if ((count <= 0) || ...": The opening parenthesis of if() is
+not closed.
+
+Page 122 -- the code has a declaration of a "int i; /*counter*/" that
+is actually never used there.
+
+Page 126, line 7 -- "lies is in the center" should be "lies in the center"
+
+Page 129, 3rd para lines 1-2:
+"where a properly implemented quicksort is implemented well" should be
+"when quicksort is implemented well"
+
+(*) Page 138, in the diagram of Figure 4.9, the description of width at the
+bottom of the diagram says: width = a^(logb(n)) = n^(logb(b))
+It should say: width = a^(logb(n)) = n^(logb(a))
+
+(*) Page 140, problem 4-9: "they appear more than once" should be "they appear
+exactly once"
+
+(*) Page 144, problem 4-45 -- change the second sentence to the following
+with corrections within **'s: "You are given the index positions where these
+words occur in **the document**,  such as word1: (1,4,5), word2: (*3*,9,10),
+and word3: (*2*,6, 15).
+
+Page 156, line 10 -- change "handled better to regular" to "handled regular".
+
+(*) Page 169-170, psuedocode -- the "time = time + 1" line should be before
+the "entry[u] = time" one (as it is the case in the corresponding C code)
+
+(*) Page 171, line -2 -- The dfs code has a bug, where each tree edge is
+processed twice in undirected graphs.  The test needs to be strengthed
+to be:
+
+    else if (((!processed[y]) && (parent[v]!=y)) || (g->directed))
+
+(*) Page 173, line 2 --  Delete the word "not", ie. "The issue is also easy
+if y has *not* been completely processed" should be "The issue is also easy
+if y has been completely processed".
+
+(*) Page 173, process_edge procedure -- the correct test should be
+    if (discovered[y] && (parent[x] != y)) {   /* found back edge */
+
+Page 174, second to last line --  "vertices 2 and 6" should read "vertices 5 and 6"
+
+(*) Page 175, line 13 -- it is clearer to say:
+"denote the earliest reachable ancestor of vertex v, meaning the
+oldest ancestor of v that we can reach from a descendant of $v$.
+by using a back edge."
+
+(*) Page 177, process-vertex-late code -- There is a problem with published
+code when the root is of degree one, as in node 6 of Figure 5.12, because
+no root testing is applied in the bridge cutnode case.   A fix is:
+
+root = (parent[parent[v]] < 1); /* test if parent[v] is root */
+
+if (!root) {
+
+    if (reachable_ancestor[v] == parent[v]) {
+        printf("parent articulation vertex: %d \n",parent[v]);
+    }
+
+    if (reachable_ancestor[v] == v) {
+        printf("bridge articulation vertex: %d \n",parent[v]);
+
+        if (tree_out_degree[v] > 0) /* test if v is not a leaf */
+            printf("bridge articulation vertex: %d \n",v);
+        }
+}
+
+Page 177, last line -- "minor" should be "appropriate" and
+"the reachable_ancestor function" should be "process_late_vertex".
+
+Page 178, Figure 5.14 -- the upgoing cross edge on right cannot appear in
+a DFS, but can in a BFS.
+
+(*) Pg 179, line 4 of the DFS-Graph(G) algorithm:
+The line "for each vertex $u \in V[G]$ do" should be indented left (to
+align with the first for-loop line).
+
+Page 182, line 6 -- "peal" should be "peel".
+
+(*) Page 184, process-vertex-late code -- There is a problem with published
+code when the component has to be popped at the root node, such as when
+the root is of degree one.  A fix is:
+
+process_vertex_late(int v) {
+
+    /*printf("exit vertex %d at time %d\n",v, exit_time[v]);*/
+
+    if (low[v] == v) { /* edge (parent[v],v) cuts off scc */
+        /*printf("strong commonent started backtracking from %d\n",v);*/
+        pop_component(v);
+    }
+
+    if (parent[v] > 0) { /* only if v is not the root */
+        if (entry_time[low[v]] < entry_time[low[parent[v]]]) {
+            low[parent[v]] = low[v];
+        }
+    }
+}
+
+
+
+
+
+(*) Page 185, Exercise 5.2 -- this graph is not acyclic.
+Reverse the edge (F,H).
+
+(*) Pg 209, line 3: "For undirected graphs, this would be breadth-first search tree": 
+"undirected" should be "unweighted".
+
+(*) Pg 210, line 9 from bottom: "provided MAXINT is less than the diameter of your graph": 
+"less than" should be "greater than".
+
+(*) Page 227, exercise 6-11: The running time should be O(m + n \log k).
+
+Page 250, line 14 from bottom: "there is a 1/n chance of getting": The 1/n should be 1/(n-1).
+Page 250, line 12 from bottom: "n times more often": Again, the n should be n-1.
+
+(*) Page 279. Figure 8.3. table on the right-hand side -- Cell [2][1]
+must be 2 not 1.  Also, should use n / k for consistancy instead of m / n.
+
+Page 280, program -- should use n, k for consistancy instead of n,m.
+
+(*) Page 282, program -- note that this routine uses the same index convention
+reported on the top of Page 284.
+
+Page 283, program -- Yes, the loops only through strlen(s)-1 times: recall that
+the strings have been prepended by blanks under the index convention above.
+
+(*) Page 291, Table.  The Li underneath Si 3  should be 2.
+
+Page 297, top paragraph shouldn't be indented.
+
+(*) Page 299, the big display after second para:
+In the subscript for the second bigvee, the "i=k" should be "k=i".
+
+Page 313, problem 8-14 -- "dynamic programming" should be "dynamic programming
+algorithm".
+
+Page 314, problem 8-20 -- maybe $k=12$ for standard phones today.
+
+Page 317, line 13 -- "be called be tough" should be "be called tough"
+
+(*) Page 317, line -10: the italic "problem" and "instance" should be swapped.
+
+Page 319, before 9.2.1 Closest Pair subheading: "The overall running time is
+the time needed to perform the reduction plus that (to) solve the b instance"
+
+Page 326, "Output: Can a subset of at least k mutually nonoverlapping interval sets (which can) be selected from I?"
+Remove parenthetical words.
+
+Page 327, before 9.3.3 Clique: "Thus, general movie scheduling must be (hard) as hard as independent set, and hence NP-complete."
+Remove parenthetical word.
+
+Page 329, third paragraph: "Literally every top-notch algorithm expert in the world (and countless lesser lights) have directly or indirectly tried to come up with..."
+have -> has
+
+(*) Page 344, line 16 -- "hard to get close to the answer" should be
+"hard to get the exact answer".
+
+Page 344, line 17 -- "probably" should be "provably"
+
+Page 381, line 10 -- "seems too be" should be "seems to be".
+
+Page 401, line 10 -- "computes the product" should be "to compute the product"
+
+(*) Page 401, line 16 -- "A[i, k] * A[k, j]" should be "A[i, k] * B[k, j]"
+
+Page 431, Problem description -- a negative sign is missing before the 2 pi
+in the exponent of the DFT definition.
+
+(*) Page 528, Problem description -- "either x notin E or y notin E" should
+be "either x notin S or y notin S".   The whole description is clumsy -- for
+no edge can both its endpoints be in the indepedent set S.
+
+(*) Page 623, caption of Figure 18.1 --
+"selecting subsets 1 and 3 or 2 and 4 (r)." should be
+"selecting subsets 1 and 3 or 2 and 3 (r)."
+
+Page 663, line -2, "it's" should be "its".
+
+Page 686, Reference [HUW02] -- Add "Tech. Report AURORA TR2002-08, Vienna University of Technology, 2002.".
+
+Back cover, bullet -3 right -- change "Exercises points" to "Exercises point"
+
+============================================================================
+
+Errata since submitting the proofs for the corrected reprint:
+
+(*) Page 110, line -12: "we will store the $2^l$ keys of the $l$th level" should
+be "we will store the $2^{l-1}$ keys of the $l$th level".
+
+Page 199, Figure 6.5:  It is more consistant with the implementation for the zeros
+in the right figure to be the index i, so the zeros should be replaced by 1, 3, and 4.
+
+(*) Page 281, right before the code: The description for the formula D[i-1,j]+1 should be the delete operation,
+and the description for the formula D[i,j-1]+1 should be the insert operation.  The descriptions are inverted.
+
+(*) Page 297, first line after the figure: the formula states that the summation equals p[j]-p[k],
+the equality should read p[j]-p[i-1]
+
+Page 654 (right figure): The real shortest superstring is ADABRACADA, not ABRACADABRA.
+
+=================================================================
+
+Commentaries
+============
+
+Page 72: Perhaps it would be more consistent to use capital letters for all container
+variables? Currently stacks and queues are lower-case, but dictionaries are upper-case.
+And to always put the container parameter first and the item/key parameter second?
+Currently stacks and queues are second in Push and Enqueue, while dictionaries are first
+in all their operations.
+
+On page 75 line 9:
+predecessor and successor to A[x] are A[x 芒藛鈥� 1] and A[x + 1], respectively.
+I suppose the x above is not related to the x in Successor(L, x) and Predecessor(L, x)?
+If that's the case, maybe use a variable name other than x to make it more clear?
+predecessor and successor to A[i] are A[i 芒藛鈥� 1] and A[i + 1], respectively.
+
+Page 76, last paragraph: There's really no need for an extra sweep over the list to maintain
+the pointer to the last item, as the deletion already requires that we get a pointer to the
+second to last item in order to un-link the last item.
+
+Pg 111, the two C function definitions:
+It might be nice to specify the function definitions that these
+functions return 'int'.
+
+Page 154, function insert_edge, "p->weight = NULL"
+I believe "p->weight = 0" would be better because NULL is supposed to be used for pointers.
+
+Pg 199, figure 6.5 right:
+Root nodes in this figure are indicated via "0", but in the algorithm
+on the next page, the representation parent[x] = x is used. Perhaps
+this figure could be changes to match up with that representation.
+
+(*) Page 133, counting occurrences
+In the findLast, we need to return "high" not "-1" when low/high cross.
+In the findFirst, we need to return "low"  when low/high cross.
+Reversing the direction of the binary comparison is not enough to get from findLast to findFirst.
+We need to switch the return statements as well.
+
+(*) Page 207, The pseudocode of Dijkstra's algorithm.
+- The pseudocode terminates when we reach the vertex t, while the C code runs all the way until
+  the distances to all vertices are evaluated.
+- The pseudocode does not construct the search tree, so unlike the real C code,
+  it is not possible to reconstruct the path.
+
+- p 397, line 10: an equally good reason to avoid inv(A) is that it
+is less numerically stable.  See Sec 14.1 of
+
+http://www.maths.manchester.ac.uk/~higham/asna
+@Book{Higham:2002:ASN,
+ author =       "Nicholas J. Higham",
+ title =        "Accuracy and Stability of Numerical Algorithms",
+ publisher =    "Society for Industrial and Applied Mathematics",
+ address =      "Philadelphia, PA, USA",
+ edition =      "Second",
+ year =         "2002",
+ pages =        "xxx+680",
+ ISBN =         "0-89871-521-0"
+}
+
+Page 233, code at bottom, The comment does not bring much value imho :)
+And there should be return type bool.
+
+
+Page 249, Figure 7.7
+It is not clear what the graph displays. Is it the values of cost_now or best_cost?
+What is "1 iteration" ... One call of the random_sampling() or
+does it correspond to the for cycle in the function?
+What value of nsamples was used?
+Is the graph one call to random_sampling() with nsamples = 1600000 and the plotted values are cost_now?
+Why did we not plot best_cost?
+
+(*) Page 250, Line -1, "in constant expected time"
+It would be great if you could elaborate on how come that we can say this is O(1)
+while it is a non-deterministically terminated loop. 
+
+Page 251, 7.5.2 Local Search
+The chapter uses "walking to the top of the mountain" as a metaphore for finding the solution with the lowest cost.
+Perhaps "walking to the lowest point in the area" would be a better metaphore because we would by
+minimizin the altitude.
+
+(*) Page 252, The text describes local search by random swaps
+but the implementation tries all swaps exhaustively.
+
+Page 254, Figure 7.9
+The graph is supposed to show streak of descending costs from the random sample to the local optima.
+I fail to distinguish them in the picture.
+Does the graph plot multiple invocations of the hill_climbing() function?
+
+Page 256, Figure 7.10
+Does the graph plot three invocations of the anneal() function?
+
+Page 258, the code, "restore temperature ..."
+This is not mentioned in the pseudocode.
+
+Page 280, the function binomial_coefficient
+I'd suggest we don't use the old K&R style parameters declaration so we are
+consistent with the rest of the book.
+
+Page 281, 8.2.1
+I would expect a mention of / reference to "Levenshtein distance" and/or "Wagner芒鈧€淔ischer algorithm".
+
+Page 323, Figure 9.2
+The direction of the arrows might be confusing because it is 
+the opposite of what's reduced to what in the chapter.
+
+Page 324, 9.3.1, "Output: Does there exist a simple tour ..."
+Should be "Does there exist a cycle ...".
+Otherwise it would be the Hamiltonian path, right?
+
+Page 325, line -6, "Traveling-Salesman-Problem-Decision-Problem"
+Remove the dashes from the problem name to be consistent.
+
+Page 333, 9.5.2, the repeated definition of Vertex Cover is not 100% identical
+with the one previously given on page 325.
+
+Page 360, line -2, [P5'7] ... 5 with an accute looks strange :)
+
+- p 397, line 15: you can delete "apparently".  It's indubitably true.
+
+-  p 402, third para from bottom.  You should really refer to the
+level 3 BLAS here, not LAPACK.  I'm not sure that Alg 601 is used
+nowadays.  More recent is
+http://www-users.cs.umn.edu/~saad/software/SPARSKIT/sparskit.html
+
+- p 433: I'd suggest citing the classic book by Van Loan
+
+@book{vanl92a,
+ author = "Van Loan, Charles F.",
+ title = "Computational Frameworks for the Fast {Fourier} Transform",
+ publisher = pub-SIAM,
+ address =   pub-SIAM:adr,
+ year = 1992,
+ pages = "xiii+273",
+ isbn = "0-89871-285-8",
+    }
+@String{pub-SIAM                = "Society for Industrial and Applied
+                                  Mathematics"}
+@String{pub-SIAM:adr            = "Philadelphia, PA, USA"}
