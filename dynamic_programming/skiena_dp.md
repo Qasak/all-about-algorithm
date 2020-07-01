@@ -186,7 +186,7 @@ int main() {
 
 $dp[i]$: 以i结尾的子数组的最长上升子序列长度
 
-$dp[i]=\max(s[i]>s[j]?dp[j]+1:dp[j]), \  j\in[0,i)$
+$dp[i]=\max(s[i]>s[j]?dp[j]+1:1), \  j\in[0,i)$
 
 ```c++
 #include<iostream>
