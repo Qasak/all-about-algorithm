@@ -805,7 +805,62 @@ int main() {
 
 
 
-## leetcode64
+## leetcode221 最大正方形
+
+brute
+
+```c
+#include<iostream>
+#include<cstring>
+using namespace std;
+
+int const MAXN=101;
+int a[MAXN][MAXN];
+int tmp[MAXN];
+int main() {
+    int mx=0;
+    int n;
+    int m;
+    cin>>n>>m;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++)
+            cin>>a[i][j];
+    }
+    for (int k = 1; k <= min(n, m); k++)
+    {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++)
+            {
+                int flag=1;
+                int sum=0;
+                for (int p = i; p < i + k ; p++)
+                {
+                    for (int q = j; q < j + k; q++)
+                    {
+                        if(p>=n||q>=m) {
+                            sum=0;
+                            break;
+                        }
+                        flag &= a[p][q];
+                        sum += 1;
+                    }
+                }
+                if(flag) {
+                    if(sum > mx) {
+                        mx=sum;
+                    }
+                }
+                    
+            }
+            
+        }
+    }
+    cout<<mx;
+    return 0;
+}
+```
+
+
 
 
 
