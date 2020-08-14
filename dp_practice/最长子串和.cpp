@@ -16,7 +16,7 @@ int main() {
     {
         sum=max(row[i], row[i]+sum);
         if(sum>mx)
-        mx=sum;
+			mx=sum;
     }
     cout<<mx;
     return 0;
