@@ -13,7 +13,7 @@ void swap(int a[], int i, int j) {
 void push(int v) {
     H[++n] = v;
     for(int k = n; k > 1; k /=2) {
-        if(H[k] < H[k / 2])
+        if(H[k] > H[k / 2])
             swap(H, k, k / 2);
         else
             break;
