@@ -13,16 +13,29 @@ struct Matrix {
     }
 };
 
-Matrix fast_pow(Matrix & a, int n) {
-    if(n==0) return Matrix(1,0,0,1);
-    if(n==1) return a;
-    Matrix t=fast_pow(a,n/2);
-    return t*t*(n%2?a:Matrix(1,0,0,1));
+// Matrix fast_pow(Matrix & a, int n) {
+//     if(n==0) return Matrix(1,0,0,1);
+//     if(n==1) return a;
+//     Matrix t=fast_pow(a,n/2);
+//     return t*t*(n%2?a:Matrix(1,0,0,1));
+// }
+
+Matrix fast_pow(Matrix & m, int n) {
+    Matrix result(1,0,0,1);
+    Matrix tmp = m;
+    while(n) {
+        if(n & 1)
+            result = tmp * result;
+        tmp = tmp * tmp;
+        n >>= 1;
+    }
+    return result;
 }
+
 
 int main() {
     Matrix m1;
     Matrix m2;
-    m2=fast_pow(m1,1<<5);
+    m2=fast_pow(m1,5);
     printf("%d %d\n%d %d",m2.a0,m2.a1,m2.b0,m2.b1);
 }
