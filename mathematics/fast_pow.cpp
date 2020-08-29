@@ -14,6 +14,7 @@ float fast_pow(float  m, int n) {
 
 
 int main() {
-    cout<<fast_pow(2.4,2);
+    cout<<pow(2.2,10)<<endl;
+    cout<<fast_pow(2.2, 10);
     return 0;
 }
